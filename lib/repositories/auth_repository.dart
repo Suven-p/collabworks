@@ -56,6 +56,8 @@ class AuthRepository {
           codeAutoRetrievalTimeout: (String verificationId) {});
       PhoneAuthCredential credential =
           PhoneAuthProvider.credential(verificationId: "", smsCode: "");
-    } else {}
+    } else {
+      //do the stuff
+    }
   }
 }
