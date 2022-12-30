@@ -44,7 +44,7 @@ class AuthRepository {
 
     if (validationType == "email") {
       validate(model, context);
-    } else if (validationType == "phone") {
+    } else {
       await firebaseAuth.verifyPhoneNumber(
           phoneNumber: '${"+91" + ""}',
           verificationCompleted: (PhoneAuthCredential credential) {},
@@ -56,8 +56,6 @@ class AuthRepository {
           codeAutoRetrievalTimeout: (String verificationId) {});
       PhoneAuthCredential credential =
           PhoneAuthProvider.credential(verificationId: "", smsCode: "");
-    } else {
-      //do the stuff
     }
   }
 }
