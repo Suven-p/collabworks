@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 
 class Signup extends StatelessWidget {
+  const Signup({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -9,37 +11,37 @@ class Signup extends StatelessWidget {
       // ignore: prefer_const_literals_to_create_immutables
 
       children: [
-        SizedBox(height: 300),
-        Icon(CupertinoIcons.add),
-        TextField(
+        const SizedBox(height: 300),
+        const Icon(CupertinoIcons.add),
+        const TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
             prefixIcon: Icon(CupertinoIcons.profile_circled),
             hintText: " Organisation Name",
           ),
         ),
-        TextField(
+        const TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
             prefixIcon: Icon(CupertinoIcons.phone),
             hintText: " Phone Number",
           ),
         ),
-        TextField(
+        const TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
             prefixIcon: Icon(CupertinoIcons.mail),
             hintText: " E-Mail",
           ),
         ),
-        TextField(
+        const TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
             prefixIcon: Icon(CupertinoIcons.padlock),
             hintText: " password",
           ),
         ),
-        TextField(
+        const TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
             prefixIcon: Icon(CupertinoIcons.padlock),
@@ -48,7 +50,7 @@ class Signup extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: () {},
-          child: Text("CREATE"),
+          child: const Text("CREATE"),
         ),
       ],
     ));

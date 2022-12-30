@@ -10,14 +10,14 @@ class LandingPage extends StatelessWidget {
     void signUp() {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Signup()),
+        MaterialPageRoute(builder: (context) => const Signup()),
       );
     }
 
     void signIn() {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Signin()),
+        MaterialPageRoute(builder: (context) => const Signin()),
       );
     }
 
@@ -46,14 +46,14 @@ class LandingPage extends StatelessWidget {
                 TextButton(
                   onPressed: signUp,
                   style: TextButton.styleFrom(
-                    foregroundColor: Color.fromARGB(255, 244, 105, 94),
+                    foregroundColor: const Color.fromARGB(255, 244, 105, 94),
                   ),
                   child: const Text("Sign Up"),
                 ),
                 TextButton(
                   onPressed: signIn,
                   style: TextButton.styleFrom(
-                    foregroundColor: Color.fromARGB(255, 244, 105, 94),
+                    foregroundColor: const Color.fromARGB(255, 244, 105, 94),
                   ),
                   child: const Text("Sign In"),
                 ),
