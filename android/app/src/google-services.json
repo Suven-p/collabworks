@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "185613864221",
+    "project_id": "collabworks-00d",
+    "storage_bucket": "collabworks-00d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185613864221:android:65faeb254693af38f8e5f4",
+        "android_client_info": {
+          "package_name": "com.collabworks.collabworks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185613864221-fpk44h81t42i1j8ka295ukaq33fr5knc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.collabworks.collabworks",
+            "certificate_hash": "50b1625dbbaea42c32f8a31e7e39e3f5c08244fe"
+          }
+        },
+        {
+          "client_id": "185613864221-ve9u4sevb03i3v76q5tq8vc81qn4m5qc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLrQqyJSNH1MY5uTMbPPt1dXAOIWZ0-rQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185613864221-ve9u4sevb03i3v76q5tq8vc81qn4m5qc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
