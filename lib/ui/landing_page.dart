@@ -1,6 +1,6 @@
+import 'package:collabworks/screens/login_screen.dart';
+import 'package:collabworks/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
-import 'signup.dart';
-import 'signin.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -12,14 +12,14 @@ class LandingPage extends StatelessWidget {
     void signUp() {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const Signup()),
+        MaterialPageRoute(builder: (context) => SignUpScreen()),
       );
     }
 
     void signIn() {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const Signin()),
+        MaterialPageRoute(builder: (context) => LoginScreen()),
       );
     }
 

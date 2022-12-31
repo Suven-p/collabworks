@@ -1,3 +1,4 @@
+import 'package:collabworks/controllers/auth_controller.dart';
 import 'package:collabworks/screens/signup_screen.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
@@ -18,6 +19,11 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+  }
+
+  void login(BuildContext context) {
+    AuthController()
+        .logIn(_emailController.text, _passwordController.text, context);
   }
 
   // const MyLogin({super.key});
@@ -120,21 +126,26 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(
                       height: 14,
                     ),
-                    Container(
-                      width: double.infinity,
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      height: size.height * 0.056,
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Log In!',
-                        style: GoogleFonts.lato(
-                          color: Color(0xFF232946),
-                          fontSize: 16,
+                    InkWell(
+                      onTap: () {
+                        login(context);
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        height: size.height * 0.056,
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Log In!',
+                          style: GoogleFonts.lato(
+                            color: Color(0xFF232946),
+                            fontSize: 16,
+                          ),
                         ),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Color(0xFFeebbc3),
-                        borderRadius: BorderRadius.circular(12),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFeebbc3),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
                     ),
                   ],

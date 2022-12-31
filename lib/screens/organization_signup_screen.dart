@@ -1,7 +1,10 @@
 import 'dart:io';
 
+import 'package:collabworks/controllers/auth_controller.dart';
+import 'package:collabworks/models/organization_model.dart';
 import 'package:collabworks/screens/login_screen.dart';
 import 'package:collabworks/screens/organization_signup_screen.dart';
+import 'package:collabworks/screens/organizaton_login_screen.dart';
 import 'package:collabworks/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
@@ -35,6 +38,15 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
     _confirmPasswordController.dispose();
   }
 
+  void signUp(BuildContext context) {
+    OrganizationModel model = OrganizationModel(
+        name: _nameController.text,
+        image: '',
+        email: _emailController.text,
+        password: _passwordController.text);
+    AuthController().registerOrganization(model, context);
+  }
+
   void pickImage(BuildContext context) async {
     final ImagePicker _picker = ImagePicker();
     // Pick an image
@@ -61,7 +73,7 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
             padding: const EdgeInsets.all(4.0),
             child: Container(
               color: Color(0xFF232946),
-              height: size.height * 1.2,
+              height: size.height * 01.2,
               child: Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: Column(
@@ -149,6 +161,7 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                       height: 15,
                     ),
                     TextField(
+                      controller: _nameController,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
@@ -161,6 +174,7 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                       height: 10,
                     ),
                     TextField(
+                      controller: _phoneNumberController,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
@@ -173,6 +187,7 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                       height: 10,
                     ),
                     TextField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
@@ -185,6 +200,7 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                       height: 10,
                     ),
                     TextField(
+                      controller: _passwordController,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
@@ -197,6 +213,7 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                       height: 10,
                     ),
                     TextField(
+                      controller: _confirmPasswordController,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
@@ -231,10 +248,10 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                       child: Container(
                         alignment: Alignment.centerLeft,
                         child: InkWell(
-                          // onTap: () => Navigator.of(context).pushReplacement(
-                          //     MaterialPageRoute(
-                          //         builder: (context) =>
-                          //             OrganizationSignUpScreen())),
+                          onTap: () => Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      OrganizationLogInScreen())),
                           child: Text(
                             'Already registered?',
                             style: GoogleFonts.roboto(
@@ -248,21 +265,26 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Container(
-                      width: double.infinity,
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      height: size.height * 0.056,
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Sign Up!',
-                        style: GoogleFonts.lato(
-                          color: Color(0xFF232946),
-                          fontSize: 16,
+                    InkWell(
+                      onTap: () {
+                        signUp(context);
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        height: size.height * 0.056,
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Sign Up!',
+                          style: GoogleFonts.lato(
+                            color: Color(0xFF232946),
+                            fontSize: 16,
+                          ),
                         ),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Color(0xFFeebbc3),
-                        borderRadius: BorderRadius.circular(12),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFeebbc3),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
                     ),
                   ],

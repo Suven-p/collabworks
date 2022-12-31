@@ -34,7 +34,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
         password: _passwordController.text);
 
     print(model);
-    AuthController().signUp(model, context);
+
+    try {
+      AuthController().signUp(model, context);
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
 
     print('success');
   }
@@ -125,6 +130,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           child: IconButton(
                             onPressed: () {
                               pickImage(context);
+                              setState(() {});
                             },
                             icon: Icon(
                               Icons.add,
