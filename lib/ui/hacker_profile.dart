@@ -1,12 +1,25 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collabworks/ui/hacker_hackathons.dart';
+import 'package:collabworks/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'hacker_scaffold.dart';
 import 'hacker_teams.dart';
 
-class HackerProfile extends StatelessWidget {
+class HackerProfile extends StatefulWidget {
   final String name;
   const HackerProfile({required this.name, Key? key}) : super(key: key);
+
+  @override
+  State<HackerProfile> createState() => _HackerProfileState();
+}
+
+class _HackerProfileState extends State<HackerProfile> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +37,7 @@ class HackerProfile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Hey $name',
+                    Text('Hey ${widget.name}',
                         style: const TextStyle(
                           fontSize: 30,
                           color: Color(0xFFfffffe),

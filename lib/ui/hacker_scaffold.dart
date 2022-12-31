@@ -1,4 +1,5 @@
 import 'package:collabworks/ui/find_teammates_screen.dart';
+import 'package:collabworks/ui/hackathons.dart';
 import 'package:collabworks/ui/hacker_hackathons.dart';
 import 'package:collabworks/ui/hacker_profile.dart';
 import 'package:flutter/material.dart';
@@ -94,8 +95,8 @@ class HackerScaffold extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => HackerHackathons()));
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => Hackathons()));
                   },
                 ),
                 Divider(
