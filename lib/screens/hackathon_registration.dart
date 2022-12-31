@@ -52,11 +52,14 @@ class _HackathonRegistrationScreenState
         ),
         const SizedBox(height: 20),
         HackathonInputField(
-            controller: _hackathonDescriptionController,
-            label: 'Hackathon Description',
-            error: '',
-            validator: anyValidator),
-            prefi
+          controller: _hackathonDescriptionController,
+          label: 'Hackathon Description',
+          error: '',
+          validator: anyValidator,
+          prefixIcon: const Icon(
+            CupertinoIcons.doc_text,
+          ),
+        ),
         const SizedBox(height: 20),
         DropdownButtonFormField(
             value: "NAEU",
