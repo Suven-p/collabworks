@@ -64,7 +64,7 @@ class HackerTeamsShort extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Row(
         children: [
-          const Text("Teams",
+          Text("Teams",
               style: GoogleFonts.poppins(
                 fontSize: 20,
                 color: Color(0xFFfffffe),
