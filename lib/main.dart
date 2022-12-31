@@ -4,7 +4,7 @@ import 'package:collabworks/screens/organizaton_login_screen.dart';
 import 'package:collabworks/screens/signup_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'ui/hacker_profile.dart';
+import 'screens/hackathon_registration.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OrganizationLogInScreen(),
+      home: HackathonRegistrationScreen(),
     );
   }
 }

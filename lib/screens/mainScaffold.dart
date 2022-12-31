@@ -6,10 +6,15 @@ class MainScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Color(0xFF232946),
-        body: SingleChildScrollView(
-          child: child,
-        ));
+    return Material(
+        color: Color(0xFF232946),
+        textStyle: const TextStyle(
+          color: Color(0xFFfffffe),
+        ),
+        child: Scaffold(
+            backgroundColor: Color(0xFF232946),
+            body: SingleChildScrollView(
+              child: child,
+            )));
   }
 }
