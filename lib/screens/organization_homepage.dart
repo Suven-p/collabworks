@@ -19,8 +19,8 @@ class OrganizationData {
   });
 }
 
-class OrganizationHackerView extends StatelessWidget {
-  OrganizationHackerView({Key? key}) : super(key: key);
+class OrganizationHomepage extends StatelessWidget {
+  OrganizationHomepage({Key? key}) : super(key: key);
   final OrganizationData organizationData = OrganizationData(
     name: "MLH",
     description: "Be a hacker",
