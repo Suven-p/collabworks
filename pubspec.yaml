@@ -45,6 +45,7 @@ dependencies:
   image_picker: ^0.8.6
   mailto: ^2.0.0
   url_launcher: ^6.1.7
+  fluttertoast: ^8.1.2
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +75,7 @@ flutter:
      - assets/images/teamImg.png
      - assets/images/mlh.png
      - assets/images/thon.png
+     - assets/images/ron.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

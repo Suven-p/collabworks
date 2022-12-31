@@ -1,3 +1,4 @@
+import 'package:collabworks/screens/hackathon_information.dart';
 import 'package:collabworks/screens/mainScaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -96,7 +97,12 @@ class Hackathons extends StatelessWidget {
                                           style: ElevatedButton.styleFrom(
                                             backgroundColor: Color(0xFFeebbc3),
                                           ),
-                                          onPressed: () => {},
+                                          onPressed: () => {
+                                                Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            HackathonInformation())),
+                                              },
                                           child: Text(
                                             'Check Details',
                                             style: TextStyle(
