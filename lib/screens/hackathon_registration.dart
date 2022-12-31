@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:collabworks/screens/organization_signup_screen.dart';
 import 'package:collabworks/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
@@ -22,6 +21,7 @@ class _HackathonRegistrationScreenState
   final _hackathonNameController = TextEditingController();
   final _hackathonDescriptionController = TextEditingController();
   final _hackathonStartDate = TextEditingController();
+  final _hackathonEndDate = TextEditingController();
   String? region = 'APAC';
 
   @override
@@ -32,15 +32,15 @@ class _HackathonRegistrationScreenState
   }
 
   void pickImage(BuildContext context) async {
-    final ImagePicker _picker = ImagePicker();
+    final ImagePicker picker = ImagePicker();
     // Pick an image
-    final XFile? file = await _picker.pickImage(source: ImageSource.gallery);
+    final XFile? file = await picker.pickImage(source: ImageSource.gallery);
 
     if (file == null) {
       showSnackBar(context, 'Please choose an image');
     } else {
       setState(() {
-        File newFile = File(file!.path);
+        File newFile = File(file.path);
         image = newFile;
         print('img is $image');
       });
@@ -55,7 +55,7 @@ class _HackathonRegistrationScreenState
       return null;
     }
 
-    Null anyValidator(String? value) {
+    String? anyValidator(String? value) {
       return null;
     }
 
@@ -67,11 +67,11 @@ class _HackathonRegistrationScreenState
                 width: 350,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Color(0xFFeebbc3),
+                  color: const Color(0xFFeebbc3),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: IconButton(
-                  icon: Icon(Icons.upload),
+                  icon: const Icon(Icons.upload),
                   onPressed: () {
                     pickImage(context);
                   },
@@ -97,7 +97,7 @@ class _HackathonRegistrationScreenState
                       onPressed: () {
                         pickImage(context);
                       },
-                      icon: Icon(Icons.edit),
+                      icon: const Icon(Icons.edit),
                     ),
                   ],
                 ),
@@ -133,8 +133,8 @@ class _HackathonRegistrationScreenState
               labelStyle: TextStyle(color: Colors.white),
               hintText: 'Region',
             ),
-            dropdownColor: Color(0xFFb8c1ec),
-            style: TextStyle(
+            dropdownColor: const Color(0xFFb8c1ec),
+            style: const TextStyle(
               color: Colors.white,
             ),
             items: const [
@@ -159,7 +159,7 @@ class _HackathonRegistrationScreenState
             labelStyle: TextStyle(color: Colors.white),
             hintText: 'Start Date',
           ),
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
           ),
           onTap: () async {
@@ -176,7 +176,7 @@ class _HackathonRegistrationScreenState
         ),
         const SizedBox(height: 20),
         TextField(
-          controller: _hackathonStartDate,
+          controller: _hackathonEndDate,
           decoration: const InputDecoration(
             hintStyle: TextStyle(color: Colors.white),
             filled: true,
@@ -187,7 +187,7 @@ class _HackathonRegistrationScreenState
             labelStyle: TextStyle(color: Colors.white),
             hintText: 'End Date',
           ),
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
           ),
           onTap: () async {
@@ -198,7 +198,7 @@ class _HackathonRegistrationScreenState
                 firstDate: DateTime(2000),
                 lastDate: DateTime(2100));
             if (date != null) {
-              _hackathonStartDate.text = date.toString();
+              _hackathonEndDate.text = date.toString();
             }
           },
         ),
@@ -206,7 +206,7 @@ class _HackathonRegistrationScreenState
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xFFeebbc3),
+              backgroundColor: const Color(0xFFeebbc3),
             ),
             onPressed: () {
               // Validate returns true if the form is valid, or false otherwise.
@@ -222,7 +222,7 @@ class _HackathonRegistrationScreenState
             child: Text(
               'Submit',
               style: GoogleFonts.roboto(
-                color: Color(0xFF232946),
+                color: const Color(0xFF232946),
               ),
             ),
           ),
@@ -235,7 +235,7 @@ class _HackathonRegistrationScreenState
   Widget build(BuildContext context) {
     return MainScaffold(
         drawer: Drawer(
-          backgroundColor: Color(0xFF232946),
+          backgroundColor: const Color(0xFF232946),
           // Add a ListView to the drawer. This ensures the user can scroll
           // through the options in the drawer if there isn't enough vertical
           // space to fit everything.
@@ -259,81 +259,81 @@ class _HackathonRegistrationScreenState
                 ),
               ),
               ListTile(
-                tileColor: Color(0xFF121629),
+                tileColor: const Color(0xFF121629),
                 title: Text(
                   'Home',
                   style: GoogleFonts.roboto(
-                    color: Color(0xFFb8c1ec),
+                    color: const Color(0xFFb8c1ec),
                   ),
                 ),
                 onTap: () {},
               ),
-              Divider(
+              const Divider(
                 height: 5,
                 thickness: 1,
               ),
               ListTile(
-                tileColor: Color(0xFF121629),
+                tileColor: const Color(0xFF121629),
                 title: Text(
                   'Hackathons',
                   style: GoogleFonts.roboto(
-                    color: Color(0xFFb8c1ec),
+                    color: const Color(0xFFb8c1ec),
                   ),
                 ),
                 onTap: () {},
               ),
-              Divider(
+              const Divider(
                 height: 5,
                 thickness: 1,
               ),
               ListTile(
-                tileColor: Color(0xFF121629),
+                tileColor: const Color(0xFF121629),
                 title: Text(
                   'Find Team mates',
                   style: GoogleFonts.roboto(
-                    color: Color(0xFFb8c1ec),
+                    color: const Color(0xFFb8c1ec),
                   ),
                 ),
                 onTap: () {},
               ),
-              Divider(
+              const Divider(
                 height: 5,
                 thickness: 1,
               ),
               ListTile(
-                tileColor: Color(0xFF121629),
+                tileColor: const Color(0xFF121629),
                 title: Text(
                   'Invitations',
                   style: GoogleFonts.roboto(
-                    color: Color(0xFFb8c1ec),
+                    color: const Color(0xFFb8c1ec),
                   ),
                 ),
                 onTap: () {},
               ),
-              Divider(
+              const Divider(
                 height: 5,
                 thickness: 1,
               ),
               ListTile(
-                tileColor: Color(0xFF121629),
+                tileColor: const Color(0xFF121629),
                 title: Text(
                   'Profile',
                   style: GoogleFonts.roboto(
-                    color: Color(0xFFb8c1ec),
+                    color: const Color(0xFFb8c1ec),
                   ),
                 ),
                 onTap: () {},
               ),
-              Divider(
+              const Divider(
                 height: 5,
                 thickness: 1,
               ),
               ListTile(
-                tileColor: Color(0xFF121629),
+                tileColor: const Color(0xFF121629),
                 title: Text(
                   'Settings',
                   style: GoogleFonts.roboto(
-                    color: Color(0xFFb8c1ec),
+                    color: const Color(0xFFb8c1ec),
                   ),
                 ),
                 onTap: () {},
@@ -342,7 +342,7 @@ class _HackathonRegistrationScreenState
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Color(0xFF232946),
+          backgroundColor: const Color(0xFF232946),
           title: const Text('CollabWorks'),
         ),
         child: Container(
