@@ -3,7 +3,6 @@ class OrganizationModel {
   final String image;
   final String email;
   final String password;
-  final String confirmPassword;
 
 //<editor-fold desc="Data Methods">
 
@@ -12,7 +11,6 @@ class OrganizationModel {
     required this.image,
     required this.email,
     required this.password,
-    required this.confirmPassword,
   });
 
   @override
@@ -23,16 +21,11 @@ class OrganizationModel {
           name == other.name &&
           image == other.image &&
           email == other.email &&
-          password == other.password &&
-          confirmPassword == other.confirmPassword);
+          password == other.password);
 
   @override
   int get hashCode =>
-      name.hashCode ^
-      image.hashCode ^
-      email.hashCode ^
-      password.hashCode ^
-      confirmPassword.hashCode;
+      name.hashCode ^ image.hashCode ^ email.hashCode ^ password.hashCode;
 
   @override
   String toString() {
@@ -41,7 +34,6 @@ class OrganizationModel {
         ' image: $image,' +
         ' email: $email,' +
         ' password: $password,' +
-        ' confirmPassword: $confirmPassword,' +
         '}';
   }
 
@@ -50,14 +42,12 @@ class OrganizationModel {
     String? image,
     String? email,
     String? password,
-    String? confirmPassword,
   }) {
     return OrganizationModel(
       name: name ?? this.name,
       image: image ?? this.image,
       email: email ?? this.email,
       password: password ?? this.password,
-      confirmPassword: confirmPassword ?? this.confirmPassword,
     );
   }
 
@@ -67,7 +57,6 @@ class OrganizationModel {
       'image': this.image,
       'email': this.email,
       'password': this.password,
-      'confirmPassword': this.confirmPassword,
     };
   }
 
@@ -77,7 +66,6 @@ class OrganizationModel {
       image: map['image'] as String,
       email: map['email'] as String,
       password: map['password'] as String,
-      confirmPassword: map['confirmPassword'] as String,
     );
   }
 
