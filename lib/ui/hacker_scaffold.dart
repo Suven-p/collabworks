@@ -1,3 +1,4 @@
+import 'package:collabworks/ui/find_teammates_screen.dart';
 import 'package:collabworks/ui/hacker_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -60,15 +61,24 @@ class HackerScaffold extends StatelessWidget {
                         )),
                   ),
                 ),
-                ListTile(
-                  tileColor: Color(0xFF121629),
-                  title: Text(
-                    'Home',
-                    style: GoogleFonts.roboto(
-                      color: Color(0xFFb8c1ec),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => HackerProfile(name: 'Armaan')));
+                  },
+                  child: ListTile(
+                    tileColor: Color(0xFF121629),
+                    title: Text(
+                      'Home',
+                      style: GoogleFonts.roboto(
+                        color: Color(0xFFb8c1ec),
+                      ),
                     ),
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => HackerProfile(name: 'Armaan')));
+                    },
                   ),
-                  onTap: () {},
                 ),
                 Divider(
                   height: 5,
@@ -96,7 +106,10 @@ class HackerScaffold extends StatelessWidget {
                       color: Color(0xFFb8c1ec),
                     ),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => FindTeammatesScreen()));
+                  },
                 ),
                 Divider(
                   height: 5,
