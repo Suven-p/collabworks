@@ -10,7 +10,7 @@ class HackerScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'ColabWorks',
+        title: 'CollabWorks',
         home: Scaffold(
           appBar: AppBar(
             title: const Text('ColabWorks'),

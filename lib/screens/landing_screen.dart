@@ -1,10 +1,33 @@
+import 'dart:async';
+
 import 'package:collabworks/screens/login_screen.dart';
 import 'package:collabworks/screens/signup_screen.dart';
+import 'package:collabworks/ui/hacker_profile.dart';
+import 'package:collabworks/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LandingPage extends StatelessWidget {
+class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
+
+  @override
+  State<LandingPage> createState() => _LandingPageState();
+}
+
+class _LandingPageState extends State<LandingPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(Duration(milliseconds: 2500), () {
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => firebaseAuth.currentUser != null
+                  ? HackerProfile(name: "Armaan")
+                  : LoginScreen()));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +72,7 @@ class LandingPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Image(
-                image: NetworkImage(
-                  "https://cdn.discordapp.com/attachments/1057264312508481629/1058409871277555723/22500901072__1_-removebg-preview.png",
-                ),
+                image: AssetImage('assets/images/logo.png'),
               ),
             ),
             Row(
