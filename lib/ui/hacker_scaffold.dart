@@ -1,3 +1,4 @@
+import 'package:collabworks/ui/hacker_profile.dart';
 import 'package:flutter/material.dart';
 
 class HackerScaffold extends StatelessWidget {
@@ -22,7 +23,7 @@ class HackerScaffold extends StatelessWidget {
                       padding: const EdgeInsets.all(5),
                       child: CircleAvatar(
                         backgroundImage: avatar,
-                      )))
+                      ))),
             ],
           ),
           drawer: Drawer(

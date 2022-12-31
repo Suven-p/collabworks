@@ -3,6 +3,8 @@ class HackathonModel {
   final String region;
   final String image;
   final String organizationName;
+  final String startDate;
+  final String endDate;
 
 //<editor-fold desc="Data Methods">
 
@@ -11,6 +13,8 @@ class HackathonModel {
     required this.region,
     required this.image,
     required this.organizationName,
+    required this.startDate,
+    required this.endDate,
   });
 
   @override
@@ -21,14 +25,18 @@ class HackathonModel {
           name == other.name &&
           region == other.region &&
           image == other.image &&
-          organizationName == other.organizationName);
+          organizationName == other.organizationName &&
+          startDate == other.startDate &&
+          endDate == other.endDate);
 
   @override
   int get hashCode =>
       name.hashCode ^
       region.hashCode ^
       image.hashCode ^
-      organizationName.hashCode;
+      organizationName.hashCode ^
+      startDate.hashCode ^
+      endDate.hashCode;
 
   @override
   String toString() {
@@ -37,6 +45,8 @@ class HackathonModel {
         ' region: $region,' +
         ' image: $image,' +
         ' organizationName: $organizationName,' +
+        ' startDate: $startDate,' +
+        ' endDate: $endDate,' +
         '}';
   }
 
@@ -45,12 +55,16 @@ class HackathonModel {
     String? region,
     String? image,
     String? organizationName,
+    String? startDate,
+    String? endDate,
   }) {
     return HackathonModel(
       name: name ?? this.name,
       region: region ?? this.region,
       image: image ?? this.image,
       organizationName: organizationName ?? this.organizationName,
+      startDate: startDate ?? this.startDate,
+      endDate: endDate ?? this.endDate,
     );
   }
 
@@ -60,6 +74,8 @@ class HackathonModel {
       'region': this.region,
       'image': this.image,
       'organizationName': this.organizationName,
+      'startDate': this.startDate,
+      'endDate': this.endDate,
     };
   }
 
@@ -69,6 +85,8 @@ class HackathonModel {
       region: map['region'] as String,
       image: map['image'] as String,
       organizationName: map['organizationName'] as String,
+      startDate: map['startDate'] as String,
+      endDate: map['endDate'] as String,
     );
   }
 
