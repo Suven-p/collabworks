@@ -1,3 +1,7 @@
+// import 'dart:html';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collabworks/screens/hackathon_registration.dart';
 import 'package:collabworks/utils/utils.dart';
 import "package:flutter/material.dart";
 import 'package:collabworks/screens/mainScaffold.dart';
@@ -37,6 +41,25 @@ class OrganizationManagement extends StatefulWidget {
 }
 
 class _OrganizationManagementState extends State<OrganizationManagement> {
+  String profilePicture = "";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
+
+  void getData() async {
+    var data = firestore
+        .collection('organizations')
+        .doc('MLH')
+        .get()
+        .then((DocumentSnapshot snapshot) {
+      profilePicture = snapshot.get('image');
+    });
+  }
+
   final OrganizationData organizationData = OrganizationData(
       name: "MLH",
       description: "Be a hacker",
@@ -182,13 +205,16 @@ class _OrganizationManagementState extends State<OrganizationManagement> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    showSnackBar(context, "Create Hackathon");
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => HackathonRegistrationScreen()));
                   },
-                  child: Text("Create new hackacton"),
+                  child: Text("Create new hackathon"),
                 ),
                 Text("Hackathons",
-                    style:
-                        GoogleFonts.roboto(color: Colors.white, fontSize: 20)),
+                    style: GoogleFonts.roboto(
+                      color: Colors.white,
+                      fontSize: 20,
+                    )),
                 createTable(organizationData.hackathons),
               ]),
         ),

@@ -128,7 +128,35 @@ class AuthRepository {
     }
   }
 
-  void addHackathon(HackathonModel model) {}
+  void addHackathon(HackathonModel model, BuildContext context) async {
+    try {
+      Reference reference = firebaseStorage.ref('images/${model.name}');
+      UploadTask uploadTask = reference.putFile(image!);
+      final storageSnapshot = uploadTask.snapshot;
+      final downloadUrl = await storageSnapshot.ref.getDownloadURL();
+
+      HackathonModel newModel = HackathonModel(
+          name: model.name,
+          region: model.region,
+          image: downloadUrl,
+          organizationName: model.organizationName,
+          startDate: model.startDate,
+          endDate: model.endDate);
+
+      firestore
+          .collection('organizations')
+          .doc('MLH')
+          .collection('hackathons')
+          .doc(model.name)
+          .set(newModel.toMap())
+          .then((value) {
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => HackerProfile(name: 'Armaan')));
+      });
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+  }
 
   void registerHacker(HackerModel model, BuildContext context) async {
     //use firebase

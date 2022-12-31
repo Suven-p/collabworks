@@ -1,3 +1,7 @@
+import 'package:collabworks/ui/find_teammates_screen.dart';
+import 'package:collabworks/ui/hacker_hackathons.dart';
+import 'package:collabworks/ui/hacker_profile.dart';
+import 'package:collabworks/ui/hacker_profile_screen.dart';
 import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
 
@@ -38,7 +42,10 @@ class DefaultDrawer extends StatelessWidget {
                 color: const Color(0xFFb8c1ec),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => HackerProfile(name: 'Armaan')));
+            },
           ),
           const Divider(
             height: 5,
@@ -52,7 +59,10 @@ class DefaultDrawer extends StatelessWidget {
                 color: const Color(0xFFb8c1ec),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => HackerHackathons()));
+            },
           ),
           const Divider(
             height: 5,
@@ -66,7 +76,10 @@ class DefaultDrawer extends StatelessWidget {
                 color: const Color(0xFFb8c1ec),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => FindTeammatesScreen()));
+            },
           ),
           const Divider(
             height: 5,
@@ -94,7 +107,10 @@ class DefaultDrawer extends StatelessWidget {
                 color: const Color(0xFFb8c1ec),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => HackerProfileScreen()));
+            },
           ),
           const Divider(
             height: 5,

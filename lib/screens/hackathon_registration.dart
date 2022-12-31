@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:collabworks/controllers/auth_controller.dart';
+import 'package:collabworks/models/hackathon_model.dart';
 import 'package:collabworks/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
@@ -29,6 +31,18 @@ class _HackathonRegistrationScreenState
     _hackathonNameController.dispose();
     _hackathonDescriptionController.dispose();
     super.dispose();
+  }
+
+  void createHackathon(BuildContext context) {
+    HackathonModel model = HackathonModel(
+        name: _hackathonNameController.text,
+        region: region!,
+        image: '',
+        organizationName: 'MLH',
+        startDate: _hackathonStartDate.text.toString(),
+        endDate: _hackathonEndDate.text.toString());
+
+    AuthController().createHackathon(model, context);
   }
 
   void pickImage(BuildContext context) async {
@@ -213,9 +227,9 @@ class _HackathonRegistrationScreenState
               if (_formKey.currentState!.validate()) {
                 // If the form is valid, display a snackbar. In the real world,
                 // you'd often call a server or save the information in a database.
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Processing Data')),
-                );
+
+                createHackathon(context);
+
                 debugPrint(_formKey.currentState!.toString());
               }
             },

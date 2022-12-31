@@ -1,3 +1,4 @@
+import 'package:collabworks/models/hackathon_model.dart';
 import 'package:collabworks/models/hacker_model.dart';
 import 'package:collabworks/repositories/auth_repository.dart';
 import 'package:flutter/material.dart';
@@ -21,5 +22,9 @@ class AuthController {
 
   void loginOrganization(String pass, String email, BuildContext context) {
     AuthRepository().loginOrganization(pass, email, context);
+  }
+
+  void createHackathon(HackathonModel model, BuildContext context) {
+    AuthRepository().addHackathon(model, context);
   }
 }

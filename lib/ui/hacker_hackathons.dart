@@ -28,38 +28,9 @@ class HackerHackathons extends StatelessWidget {
           image: "https://thispersondoesnotexist.com/image",
           members: "5",
           projects: "1"),
-      HackathonData(
-          name: "Hackathon 2",
-          description: "Hackathon 2 description",
-          image: "https://thispersondoesnotexist.com/image",
-          members: "5",
-          projects: "1"),
-      HackathonData(
-          name: "Hackathon 3",
-          description: "Hackathon 3 description",
-          image: "https://thispersondoesnotexist.com/image",
-          members: "5",
-          projects: "1"),
-      HackathonData(
-          name: "Hackathon 4",
-          description: "Hackathon 4 description",
-          image: "https://thispersondoesnotexist.com/image",
-          members: "5",
-          projects: "1"),
-      HackathonData(
-          name: "Hackathon 5",
-          description: "Hackathon 5 description",
-          image: "https://thispersondoesnotexist.com/image",
-          members: "5",
-          projects: "1"),
-      HackathonData(
-          name: "Hackathon 6",
-          description: "Hackathon 6 description",
-          image: "https://thispersondoesnotexist.com/image",
-          members: "6",
-          projects: "1"),
     ];
     return Container(
+        color: Color(0xFF232946),
         alignment: Alignment.topLeft,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,41 +52,47 @@ class HackerHackathons extends StatelessWidget {
             const SizedBox(height: 10),
             SingleChildScrollView(
                 scrollDirection: Axis.vertical,
-                child: Column(
-                    children: hackathons
-                        .map((hackathon) => Container(
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Image.network(hackathon.image, width: 30),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(hackathon.name,
-                                        style: TextStyle(
-                                          color: Color(0xFFb8c1ec),
-                                        )),
-                                    Text(hackathon.description,
-                                        style: TextStyle(
-                                          color: Color(0xFFb8c1ec),
-                                        )),
-                                  ],
-                                ),
-                                ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Color(0xFFeebbc3),
-                                    ),
-                                    onPressed: () => {},
-                                    child: Text(
-                                      'Check Details',
-                                      style: TextStyle(
-                                        color: Color(0xFF232946),
+                child: Container(
+                  color: Color(0xFF232946),
+                  child: Column(
+                      children: hackathons
+                          .map((hackathon) => Container(
+                              color: Color(0xFF232946),
+                              padding: const EdgeInsets.only(bottom: 310),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Image.network(hackathon.image, width: 30),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(hackathon.name,
+                                          style: TextStyle(
+                                            color: Color(0xFFb8c1ec),
+                                          )),
+                                      Text(hackathon.description,
+                                          style: TextStyle(
+                                            color: Color(0xFFb8c1ec),
+                                          )),
+                                    ],
+                                  ),
+                                  ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Color(0xFFeebbc3),
                                       ),
-                                    )),
-                              ],
-                            )))
-                        .toList()))
+                                      onPressed: () => {},
+                                      child: Text(
+                                        'Check Details',
+                                        style: TextStyle(
+                                          color: Color(0xFF232946),
+                                        ),
+                                      )),
+                                ],
+                              )))
+                          .toList()),
+                ))
           ],
         ));
   }
