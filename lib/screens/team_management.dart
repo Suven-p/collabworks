@@ -24,7 +24,7 @@ class TeamManagement extends StatelessWidget {
     name: "Team 1",
     description: "A ragtag bunch of so-called full-stack developers",
     hackathon: "Support-a-thon",
-    members: ['Member 1', 'Member 2'],
+    members: ['Member 1', 'Member 2', 'Member 3'],
     image:
         'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   );
