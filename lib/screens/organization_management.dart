@@ -67,58 +67,13 @@ class _OrganizationManagementState extends State<OrganizationManagement> {
       email: "hi@mlh.io",
       phone: "+9779834534342",
       address: "Organization Address",
-      image: "https://thispersondoesnotexist.com/image",
+      image: "assets/images/mlh.png",
       hackathons: [
         HackathonData(
-            name: "Hackathon 1",
-            startDate: "10/10",
-            endDate: "10/11",
-            description: "Description"),
-        HackathonData(
-            name: "Hackathon 2",
-            startDate: "10/12",
-            endDate: "10/13",
-            description: "Description"),
-        HackathonData(
-            name: "Hackathon 3",
-            startDate: "10/13",
-            endDate: "10/14",
-            description: "Description"),
-        HackathonData(
-            name: "Hackathon 4",
-            startDate: "10/14",
-            endDate: "10/15",
-            description: "Description"),
-        HackathonData(
-            name: "Hackathon 5",
-            startDate: "10/15",
-            endDate: "10/16",
-            description: "Description"),
-        HackathonData(
-            name: "Hackathon 6",
-            startDate: "10/10",
-            endDate: "10/11",
-            description: "Description"),
-        HackathonData(
-            name: "Hackathon 7",
-            startDate: "10/12",
-            endDate: "10/13",
-            description: "Description"),
-        HackathonData(
-            name: "Hackathon 8",
-            startDate: "10/13",
-            endDate: "10/14",
-            description: "Description"),
-        HackathonData(
-            name: "Hackathon 9",
-            startDate: "10/14",
-            endDate: "10/15",
-            description: "Description"),
-        HackathonData(
-            name: "Hackathon 10",
-            startDate: "10/15",
-            endDate: "10/16",
-            description: "Description"),
+            name: "Design-a-thon",
+            startDate: "23/12",
+            endDate: "15/12",
+            description: "show your creativity!"),
       ]);
 
   void deleteAtIndex(int index) {
@@ -157,19 +112,22 @@ class _OrganizationManagementState extends State<OrganizationManagement> {
                               Icons.edit,
                             ),
                           )),
-                      SizedBox(width: 20),
-                      SizedBox(
-                          width: 32,
-                          height: 32,
-                          child: FloatingActionButton(
-                            onPressed: () {
-                              deleteAtIndex(idx);
-                            },
-                            tooltip: "Delete",
-                            child: Icon(
-                              Icons.delete,
-                            ),
-                          )),
+                      SizedBox(width: 12),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 18.0),
+                        child: SizedBox(
+                            width: 32,
+                            height: 32,
+                            child: FloatingActionButton(
+                              onPressed: () {
+                                deleteAtIndex(idx);
+                              },
+                              tooltip: "Delete",
+                              child: Icon(
+                                Icons.delete,
+                              ),
+                            )),
+                      ),
                     ],
                   ),
                 )
@@ -201,7 +159,9 @@ class _OrganizationManagementState extends State<OrganizationManagement> {
                 SizedBox(
                   height: 150,
                   width: size.width,
-                  child: Image.network(organizationData.image),
+                  child: Image(
+                    image: AssetImage('assets/images/mlh.png'),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () {

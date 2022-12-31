@@ -74,6 +74,7 @@ flutter:
      - assets/images/teamImg.png
      - assets/images/mlh.png
      - assets/images/thon.png
+     - assets/images/ron.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

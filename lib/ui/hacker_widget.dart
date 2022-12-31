@@ -1,3 +1,4 @@
+import 'package:collabworks/ui/ron_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -48,18 +49,24 @@ class HackerWidget extends StatelessWidget {
             Container(
               width: 10,
             ),
-            Container(
-              width: 80,
-              height: 50,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                'View Profile',
-                style: GoogleFonts.roboto(
-                  color: Colors.white,
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => RonProfileScreen()));
+              },
+              child: Container(
+                width: 80,
+                height: 50,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Text(
+                  'View Profile',
+                  style: GoogleFonts.roboto(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
