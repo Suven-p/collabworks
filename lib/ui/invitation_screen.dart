@@ -21,6 +21,7 @@ class _InvitationScreenState extends State<InvitationScreen> {
         preferredSize: Size(double.infinity, kToolbarHeight),
         child: DefaultAppBar(),
       ),
+      drawer: DefaultDrawer(),
       body: SingleChildScrollView(
         child: Container(
           child: Column(
