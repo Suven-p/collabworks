@@ -1,4 +1,130 @@
 import "package:flutter/material.dart";
+import 'package:google_fonts/google_fonts.dart';
+
+class DefaultDrawer extends StatelessWidget {
+  const DefaultDrawer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      backgroundColor: const Color(0xFF232946),
+      // Add a ListView to the drawer. This ensures the user can scroll
+      // through the options in the drawer if there isn't enough vertical
+      // space to fit everything.
+      child: ListView(
+        // Important: Remove any padding from the ListView.
+
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: const BoxDecoration(
+              color: Color(0xFF232946),
+              image:
+                  DecorationImage(image: AssetImage('assets/images/logo.png')),
+            ),
+            child: Container(
+              alignment: Alignment.bottomLeft,
+              child: const Text("",
+                  style: TextStyle(
+                    color: Colors.white,
+                  )),
+            ),
+          ),
+          ListTile(
+            tileColor: const Color(0xFF121629),
+            title: Text(
+              'Home',
+              style: GoogleFonts.roboto(
+                color: const Color(0xFFb8c1ec),
+              ),
+            ),
+            onTap: () {},
+          ),
+          const Divider(
+            height: 5,
+            thickness: 1,
+          ),
+          ListTile(
+            tileColor: const Color(0xFF121629),
+            title: Text(
+              'Hackathons',
+              style: GoogleFonts.roboto(
+                color: const Color(0xFFb8c1ec),
+              ),
+            ),
+            onTap: () {},
+          ),
+          const Divider(
+            height: 5,
+            thickness: 1,
+          ),
+          ListTile(
+            tileColor: const Color(0xFF121629),
+            title: Text(
+              'Find Team mates',
+              style: GoogleFonts.roboto(
+                color: const Color(0xFFb8c1ec),
+              ),
+            ),
+            onTap: () {},
+          ),
+          const Divider(
+            height: 5,
+            thickness: 1,
+          ),
+          ListTile(
+            tileColor: const Color(0xFF121629),
+            title: Text(
+              'Invitations',
+              style: GoogleFonts.roboto(
+                color: const Color(0xFFb8c1ec),
+              ),
+            ),
+            onTap: () {},
+          ),
+          const Divider(
+            height: 5,
+            thickness: 1,
+          ),
+          ListTile(
+            tileColor: const Color(0xFF121629),
+            title: Text(
+              'Profile',
+              style: GoogleFonts.roboto(
+                color: const Color(0xFFb8c1ec),
+              ),
+            ),
+            onTap: () {},
+          ),
+          const Divider(
+            height: 5,
+            thickness: 1,
+          ),
+          ListTile(
+            tileColor: const Color(0xFF121629),
+            title: Text(
+              'Settings',
+              style: GoogleFonts.roboto(
+                color: const Color(0xFFb8c1ec),
+              ),
+            ),
+            onTap: () {},
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DefaultAppBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: const Color(0xFF232946),
+      title: const Text('CollabWorks'),
+    );
+  }
+}
 
 class MainScaffold extends StatelessWidget {
   final Widget child;
@@ -14,17 +140,17 @@ class MainScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Color(0xFF232946),
+        color: const Color(0xFF232946),
         textStyle: const TextStyle(
           color: Color(0xFFfffffe),
         ),
         child: Scaffold(
             drawer: drawer,
             appBar: PreferredSize(
-              preferredSize: Size(double.infinity, kToolbarHeight),
+              preferredSize: const Size(double.infinity, kToolbarHeight),
               child: appBar,
             ),
-            backgroundColor: Color(0xFF232946),
+            backgroundColor: const Color(0xFF232946),
             body: SingleChildScrollView(
               child: child,
             )));

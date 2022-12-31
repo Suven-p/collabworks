@@ -28,7 +28,6 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _nameController.dispose();
     _ageController.dispose();
@@ -48,15 +47,15 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
   }
 
   void pickImage(BuildContext context) async {
-    final ImagePicker _picker = ImagePicker();
+    final ImagePicker picker = ImagePicker();
     // Pick an image
-    final XFile? file = await _picker.pickImage(source: ImageSource.gallery);
+    final XFile? file = await picker.pickImage(source: ImageSource.gallery);
 
     if (file == null) {
       showSnackBar(context, 'Please choose an image');
     } else {
       setState(() {
-        File newFile = File(file!.path);
+        File newFile = File(file.path);
         image = newFile;
         print('img is $image');
       });
@@ -67,12 +66,12 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-        backgroundColor: Color(0xFF232946),
+        backgroundColor: const Color(0xFF232946),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(4.0),
             child: Container(
-              color: Color(0xFF232946),
+              color: const Color(0xFF232946),
               height: size.height * 01.2,
               child: Padding(
                 padding: const EdgeInsets.all(18.0),
@@ -88,7 +87,7 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                       style: GoogleFonts.roboto(
                         fontSize: 21,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFFfffffe),
+                        color: const Color(0xFFfffffe),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -97,15 +96,15 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                       style: GoogleFonts.roboto(
                         fontSize: 17,
                         fontWeight: FontWeight.w300,
-                        color: Color(0xFFfffffe),
+                        color: const Color(0xFFfffffe),
                       ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Text(
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
                         'Choose the organization image',
                         style: TextStyle(
                           fontSize: 18,
@@ -122,11 +121,11 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                             width: 350,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                              color: Color(0xFFeebbc3),
+                              color: const Color(0xFFeebbc3),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: IconButton(
-                              icon: Icon(Icons.upload),
+                              icon: const Icon(Icons.upload),
                               onPressed: () {
                                 pickImage(context);
                               },
@@ -152,7 +151,7 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                                   onPressed: () {
                                     pickImage(context);
                                   },
-                                  icon: Icon(Icons.edit),
+                                  icon: const Icon(Icons.edit),
                                 ),
                               ],
                             ),
@@ -162,7 +161,7 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                     ),
                     TextField(
                       controller: _nameController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
                         border: OutlineInputBorder(),
@@ -175,7 +174,7 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                     ),
                     TextField(
                       controller: _phoneNumberController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
                         border: OutlineInputBorder(),
@@ -188,7 +187,7 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                     ),
                     TextField(
                       controller: _emailController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
                         border: OutlineInputBorder(),
@@ -201,7 +200,7 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                     ),
                     TextField(
                       controller: _passwordController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
                         border: OutlineInputBorder(),
@@ -214,7 +213,7 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                     ),
                     TextField(
                       controller: _confirmPasswordController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
                         border: OutlineInputBorder(),
@@ -237,7 +236,7 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                             'Are you a hacker?',
                             style: GoogleFonts.roboto(
                               fontSize: 13,
-                              color: Color(0xFFb8c1ec),
+                              color: const Color(0xFFb8c1ec),
                             ),
                           ),
                         ),
@@ -256,7 +255,7 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                             'Already registered?',
                             style: GoogleFonts.roboto(
                               fontSize: 13,
-                              color: Color(0xFFb8c1ec),
+                              color: const Color(0xFFb8c1ec),
                             ),
                           ),
                         ),
@@ -274,16 +273,16 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
                         margin: const EdgeInsets.symmetric(horizontal: 10),
                         height: size.height * 0.056,
                         alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFeebbc3),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                         child: Text(
                           'Sign Up!',
                           style: GoogleFonts.lato(
-                            color: Color(0xFF232946),
+                            color: const Color(0xFF232946),
                             fontSize: 16,
                           ),
-                        ),
-                        decoration: BoxDecoration(
-                          color: Color(0xFFeebbc3),
-                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
                     ),

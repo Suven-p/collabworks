@@ -57,15 +57,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void pickImage(BuildContext context) async {
-    final ImagePicker _picker = ImagePicker();
+    final ImagePicker picker = ImagePicker();
     // Pick an image
-    final XFile? file = await _picker.pickImage(source: ImageSource.gallery);
+    final XFile? file = await picker.pickImage(source: ImageSource.gallery);
 
     if (file == null) {
       showSnackBar(context, 'Please choose an image');
     } else {
       setState(() {
-        File newFile = File(file!.path);
+        File newFile = File(file.path);
         image = newFile;
         print('img is $image');
       });
@@ -76,13 +76,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-        backgroundColor: Color(0xFF232946),
+        backgroundColor: const Color(0xFF232946),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
               height: size.height * 1,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 // border: Border.all(
                 //   color: Colors.white,
                 // ),
@@ -99,7 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: GoogleFonts.roboto(
                         fontSize: 21,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFFfffffe),
+                        color: const Color(0xFFfffffe),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -108,7 +108,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: GoogleFonts.roboto(
                         fontSize: 17,
                         fontWeight: FontWeight.w300,
-                        color: Color(0xFFfffffe),
+                        color: const Color(0xFFfffffe),
                       ),
                     ),
                     const SizedBox(
@@ -117,7 +117,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Stack(
                       children: [
                         image == null
-                            ? CircleAvatar(
+                            ? const CircleAvatar(
                                 backgroundImage: NetworkImage(
                                     'https://previews.123rf.com/images/kritchanut/kritchanut1406/kritchanut140600093/29213195-male-silhouette-avatar-profile-picture.jpg'),
                                 radius: 40,
@@ -127,19 +127,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 radius: 40,
                               ),
                         Positioned(
+                          right: -10,
+                          top: 40,
                           child: IconButton(
                             onPressed: () {
                               pickImage(context);
                               setState(() {});
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.add,
                               size: 30,
                               color: Colors.green,
                             ),
                           ),
-                          right: -10,
-                          top: 40,
                         ),
                       ],
                     ),
@@ -148,7 +148,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     TextField(
                       controller: _nameController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
                         border: OutlineInputBorder(),
@@ -161,7 +161,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     TextField(
                       controller: _ageController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
                         border: OutlineInputBorder(),
@@ -174,7 +174,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     TextField(
                       controller: _phoneNumberController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
                         border: OutlineInputBorder(),
@@ -187,7 +187,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     TextField(
                       controller: _emailController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
                         border: OutlineInputBorder(),
@@ -200,7 +200,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     TextField(
                       controller: _passwordController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
                         border: OutlineInputBorder(),
@@ -213,7 +213,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     TextField(
                       controller: _confirmPasswordController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
                         border: OutlineInputBorder(),
@@ -236,7 +236,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             'Already have an account?',
                             style: GoogleFonts.roboto(
                               fontSize: 13,
-                              color: Color(0xFFb8c1ec),
+                              color: const Color(0xFFb8c1ec),
                             ),
                           ),
                         ),
@@ -255,7 +255,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             'An Organization?',
                             style: GoogleFonts.roboto(
                               fontSize: 13,
-                              color: Color(0xFFb8c1ec),
+                              color: const Color(0xFFb8c1ec),
                             ),
                           ),
                         ),
@@ -273,16 +273,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         margin: const EdgeInsets.symmetric(horizontal: 10),
                         height: size.height * 0.056,
                         alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFeebbc3),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                         child: Text(
                           'Sign Up!',
                           style: GoogleFonts.lato(
-                            color: Color(0xFF232946),
+                            color: const Color(0xFF232946),
                             fontSize: 16,
                           ),
-                        ),
-                        decoration: BoxDecoration(
-                          color: Color(0xFFeebbc3),
-                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
                     ),
