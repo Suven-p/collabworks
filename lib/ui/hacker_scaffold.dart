@@ -20,17 +20,20 @@ class HackerScaffold extends StatelessWidget {
             backgroundColor: Color(0xFF232946),
             title: const Text('CollabWorks'),
             actions: [
-              GestureDetector(
-                  onTap: () {
-                    debugPrint("Avatar tapped");
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => HackerProfileScreen()));
-                  },
-                  child: Container(
-                      padding: const EdgeInsets.all(5),
-                      child: CircleAvatar(
-                        backgroundImage: avatar,
-                      ))),
+              Padding(
+                padding: const EdgeInsets.only(right: 18.0),
+                child: GestureDetector(
+                    onTap: () {
+                      debugPrint("Avatar tapped");
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => HackerProfileScreen()));
+                    },
+                    child: Container(
+                        padding: const EdgeInsets.all(5),
+                        child: CircleAvatar(
+                          backgroundImage: avatar,
+                        ))),
+              ),
             ],
           ),
           drawer: Drawer(

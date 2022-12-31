@@ -35,8 +35,14 @@ class HackerProfile extends StatelessWidget {
                       style: const TextStyle(color: Colors.grey),
                     ),
                     const SizedBox(height: 20),
-                    HackerTeamsShort(),
-                    HackerHackathons(),
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: HackerTeamsShort(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: HackerHackathons(),
+                    ),
                   ],
                 ))));
   }
