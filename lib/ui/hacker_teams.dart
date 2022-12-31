@@ -63,7 +63,11 @@ class HackerTeamsShort extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Row(
         children: [
-          const Text("Teams", style: const TextStyle(fontSize: 20)),
+          const Text("Teams",
+              style: const TextStyle(
+                fontSize: 20,
+                color: Color(0xFFfffffe),
+              )),
           const Spacer(),
           TextButton(
               onPressed: () {},
@@ -92,7 +96,15 @@ class HackerTeamsShort extends StatelessWidget {
                     radius: 58,
                     backgroundImage: NetworkImage(teams[index].image),
                   ),
-                  Text(teams[index].name)
+                  Padding(
+                    padding: const EdgeInsets.all(1.0),
+                    child: Text(
+                      teams[index].name,
+                      style: TextStyle(
+                        color: Color(0xFFb8c1ec),
+                      ),
+                    ),
+                  )
                 ]),
               );
             },

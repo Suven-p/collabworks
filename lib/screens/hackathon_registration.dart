@@ -56,6 +56,7 @@ class _HackathonRegistrationScreenState
             label: 'Hackathon Description',
             error: '',
             validator: anyValidator),
+            prefi
         const SizedBox(height: 20),
         DropdownButtonFormField(
             value: "NAEU",
