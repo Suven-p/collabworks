@@ -63,11 +63,20 @@ class HackerHackathons extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Hackathons',
-                style: const TextStyle(
-                  fontSize: 30,
-                )),
-            const SizedBox(height: 20),
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 8.0,
+                right: 8,
+              ),
+              child: Text('Hackathons',
+                  style: const TextStyle(
+                    fontSize: 30,
+                  )),
+            ),
+            const SizedBox(height: 10),
             SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Column(
@@ -77,7 +86,7 @@ class HackerHackathons extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Image.network(hackathon.image, width: 50),
+                                Image.network(hackathon.image, width: 30),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
