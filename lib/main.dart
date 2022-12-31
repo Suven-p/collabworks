@@ -1,4 +1,3 @@
-import 'package:collabworks/screens/organization_homepage.dart';
 import 'package:collabworks/screens/landing_screen.dart';
 import 'package:collabworks/screens/login_screen.dart';
 import 'package:collabworks/screens/organization_signup_screen.dart';
