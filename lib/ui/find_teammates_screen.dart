@@ -1,4 +1,5 @@
 import 'package:collabworks/ui/hacker_profile.dart';
+import 'package:collabworks/ui/hacker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -152,6 +153,21 @@ class FindTeammatesScreen extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
+              Center(
+                child: Text(
+                  'Work with a great hacker just like you!',
+                  style: GoogleFonts.poppins(
+                    color: Color(0xFFfffffe),
+                    fontSize: 26,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              HackerWidget(),
+              HackerWidget(),
             ],
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HackathonData {
   final String name;
@@ -72,7 +73,7 @@ class HackerHackathons extends StatelessWidget {
                 right: 8,
               ),
               child: Text('Hackathons',
-                  style: const TextStyle(
+                  style: GoogleFonts.poppins(
                     fontSize: 20,
                     color: Color(0xFFfffffe),
                   )),
