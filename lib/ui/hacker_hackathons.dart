@@ -73,7 +73,7 @@ class HackerHackathons extends StatelessWidget {
               ),
               child: Text('Hackathons',
                   style: const TextStyle(
-                    fontSize: 30,
+                    fontSize: 20,
                     color: Color(0xFFfffffe),
                   )),
             ),

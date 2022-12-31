@@ -187,37 +187,60 @@ class HackerProfileScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10),
-                    Container(
+                    const SizedBox(height: 30),
+                    Card(
+                      elevation: 2.0,
                       child: Container(
-                        width: size.width * 0.9,
-                        height: size.height * 0.03,
-                        color: Color(0xFF232946),
-                        child: Center(
-                          child: Text(
-                            'armaan33000@gmail.com',
-                            style: GoogleFonts.roboto(
-                              fontSize: 18,
-                              color: Color(0xFFb8c1ec),
+                        padding: const EdgeInsets.all(0),
+                        child: Column(
+                          children: [
+                            Container(
+                              child: Container(
+                                alignment: Alignment.centerLeft,
+                                width: size.width * 0.9,
+                                height: size.height * 0.03,
+                                color: Color(0xFF232946),
+                                child: Text(
+                                  'Email: armaan33000@gmail.com',
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 18,
+                                    color: Color(0xFFb8c1ec),
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 0),
-                    Container(
-                      child: Container(
-                        width: size.width * 0.9,
-                        height: size.height * 0.05,
-                        color: Color(0xFF232946),
-                        child: Center(
-                          child: Text(
-                            'Age: 18',
-                            style: GoogleFonts.roboto(
-                              fontSize: 14,
-                              color: Color(0xFFb8c1ec),
+                            const SizedBox(height: 0),
+                            Container(
+                              child: Container(
+                                width: size.width * 0.9,
+                                height: size.height * 0.05,
+                                alignment: Alignment.centerLeft,
+                                color: Color(0xFF232946),
+                                child: Text(
+                                  'Age: 18',
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 14,
+                                    color: Color(0xFFb8c1ec),
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
+                            Container(
+                              child: Container(
+                                width: size.width * 0.9,
+                                height: size.height * 0.05,
+                                alignment: Alignment.centerLeft,
+                                color: Color(0xFF232946),
+                                child: Text(
+                                  'Phone number: 7009280622',
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 14,
+                                    color: Color(0xFFb8c1ec),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
