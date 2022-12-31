@@ -16,6 +16,7 @@ class HackerProfile extends StatelessWidget {
     return HackerScaffold(
         avatar: const NetworkImage("https://thispersondoesnotexist.com/image"),
         child: Container(
+            color: Color(0xFF232946),
             alignment: Alignment.topLeft,
             child: Container(
                 alignment: Alignment.topLeft,
@@ -26,6 +27,7 @@ class HackerProfile extends StatelessWidget {
                     Text('Hey $name',
                         style: const TextStyle(
                           fontSize: 30,
+                          color: Color(0xFFfffffe),
                         )),
                     Text(
                       date,

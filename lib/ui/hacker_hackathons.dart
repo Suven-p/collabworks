@@ -74,6 +74,7 @@ class HackerHackathons extends StatelessWidget {
               child: Text('Hackathons',
                   style: const TextStyle(
                     fontSize: 30,
+                    color: Color(0xFFfffffe),
                   )),
             ),
             const SizedBox(height: 10),
@@ -90,13 +91,27 @@ class HackerHackathons extends StatelessWidget {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(hackathon.name),
-                                    Text(hackathon.description),
+                                    Text(hackathon.name,
+                                        style: TextStyle(
+                                          color: Color(0xFFb8c1ec),
+                                        )),
+                                    Text(hackathon.description,
+                                        style: TextStyle(
+                                          color: Color(0xFFb8c1ec),
+                                        )),
                                   ],
                                 ),
                                 ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Color(0xFFeebbc3),
+                                    ),
                                     onPressed: () => {},
-                                    child: Text('Check Details'))
+                                    child: Text(
+                                      'Check Details',
+                                      style: TextStyle(
+                                        color: Color(0xFF232946),
+                                      ),
+                                    )),
                               ],
                             )))
                         .toList()))
