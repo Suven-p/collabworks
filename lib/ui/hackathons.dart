@@ -24,9 +24,9 @@ class Hackathons extends StatelessWidget {
   Widget build(BuildContext context) {
     const List<HackathonData> hackathons = [
       HackathonData(
-          name: "Hackathon 1",
-          description: "Hackathon 1 description",
-          image: "https://thispersondoesnotexist.com/image",
+          name: "Design-a-thon",
+          description: "Show your creativity!",
+          image: "assets/images/thon.png",
           members: "5",
           projects: "1"),
     ];
@@ -68,37 +68,43 @@ class Hackathons extends StatelessWidget {
                             .map((hackathon) => Container(
                                 color: Color(0xFF232946),
                                 padding: const EdgeInsets.only(bottom: 310),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Image.network(hackathon.image, width: 50),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(hackathon.name,
-                                            style: TextStyle(
-                                              color: Color(0xFFb8c1ec),
-                                            )),
-                                        Text(hackathon.description,
-                                            style: TextStyle(
-                                              color: Color(0xFFb8c1ec),
-                                            )),
-                                      ],
-                                    ),
-                                    ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: Color(0xFFeebbc3),
-                                        ),
-                                        onPressed: () => {},
-                                        child: Text(
-                                          'Check Details',
-                                          style: TextStyle(
-                                            color: Color(0xFF232946),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Image(
+                                        image: AssetImage(hackathon.image),
+                                        height: 40,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(hackathon.name,
+                                              style: TextStyle(
+                                                color: Color(0xFFb8c1ec),
+                                              )),
+                                          Text(hackathon.description,
+                                              style: TextStyle(
+                                                color: Color(0xFFb8c1ec),
+                                              )),
+                                        ],
+                                      ),
+                                      ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Color(0xFFeebbc3),
                                           ),
-                                        )),
-                                  ],
+                                          onPressed: () => {},
+                                          child: Text(
+                                            'Check Details',
+                                            style: TextStyle(
+                                              color: Color(0xFF232946),
+                                            ),
+                                          )),
+                                    ],
+                                  ),
                                 )))
                             .toList()),
                   ))

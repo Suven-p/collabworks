@@ -170,7 +170,6 @@ class FindTeammatesScreen extends StatelessWidget {
                 height: 20,
               ),
               HackerWidget(),
-              HackerWidget(),
             ],
           ),
         ),

@@ -21,7 +21,7 @@ class HackerWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8),
               child: CircleAvatar(
-                backgroundImage: NetworkImage(''),
+                backgroundImage: AssetImage('assets/images/mlh.png'),
                 radius: 30,
               ),
             ),
@@ -30,14 +30,14 @@ class HackerWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Armaan',
+                  'Ron',
                   style: GoogleFonts.lato(
                     fontSize: 22,
                     color: Color(0xFF121629),
                   ),
                 ),
                 Text(
-                  'armaan33000@gmail.com',
+                  'ron330000@gmail.com',
                   style: GoogleFonts.lato(
                     fontSize: 14,
                     color: Color(0xFF121629),

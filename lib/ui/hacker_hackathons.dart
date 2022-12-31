@@ -23,9 +23,9 @@ class HackerHackathons extends StatelessWidget {
   Widget build(BuildContext context) {
     const List<HackathonData> hackathons = [
       HackathonData(
-          name: "Hackathon 1",
-          description: "Hackathon 1 description",
-          image: "https://thispersondoesnotexist.com/image",
+          name: "Design-a-thon",
+          description: "Show your creativity!",
+          image: "assets/images/thon.png",
           members: "5",
           projects: "1"),
     ];
@@ -63,7 +63,12 @@ class HackerHackathons extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Image.network(hackathon.image, width: 30),
+                                  Image(
+                                    image: AssetImage(
+                                      hackathon.image,
+                                    ),
+                                    height: 20,
+                                  ),
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,

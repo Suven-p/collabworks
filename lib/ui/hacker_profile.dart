@@ -15,10 +15,25 @@ class HackerProfile extends StatefulWidget {
 }
 
 class _HackerProfileState extends State<HackerProfile> {
+  String profilePicture = "";
+  String hackerName = "";
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    getData();
+  }
+
+  void getData() {
+    var data = firestore
+        .collection('hackers')
+        .doc(firebaseAuth.currentUser?.uid ?? '')
+        .get()
+        .then((DocumentSnapshot snapshot) {
+      profilePicture = snapshot.get('profilePicture');
+      hackerName = snapshot.get('name');
+    });
   }
 
   @override
@@ -27,7 +42,7 @@ class _HackerProfileState extends State<HackerProfile> {
     // String date = '${now.weekday} ${now.day}/${now.month}/${now.year}';
     String date = DateFormat('EEEE, d MMMM yyyy').format(now);
     return HackerScaffold(
-        avatar: const NetworkImage("https://thispersondoesnotexist.com/image"),
+        avatar: NetworkImage(profilePicture),
         child: Container(
             color: Color(0xFF232946),
             alignment: Alignment.topLeft,
