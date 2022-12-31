@@ -137,7 +137,10 @@ class HackerScaffold extends StatelessWidget {
                       color: Color(0xFFb8c1ec),
                     ),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => HackerProfileScreen()));
+                  },
                 ),
                 Divider(
                   height: 5,
