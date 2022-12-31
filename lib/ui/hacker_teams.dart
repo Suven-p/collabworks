@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collabworks/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,46 +20,29 @@ class TeamData {
       required this.projects});
 }
 
-class HackerTeamsShort extends StatelessWidget {
+class HackerTeamsShort extends StatefulWidget {
   const HackerTeamsShort({Key? key}) : super(key: key);
+
+  @override
+  State<HackerTeamsShort> createState() => _HackerTeamsShortState();
+}
+
+class _HackerTeamsShortState extends State<HackerTeamsShort> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     const List<TeamData> teams = [
       TeamData(
-          name: "Team 1",
-          description: "Team 1 description",
-          image: "https://thispersondoesnotexist.com/image",
+          name: "MLH TEAM",
+          description: "Create something good us",
+          image: "assets/images/teamImg.png",
           members: "5",
-          hackathons: "2",
-          projects: "1"),
-      TeamData(
-          name: "Team 2",
-          description: "Team 2 description",
-          image: "https://thispersondoesnotexist.com/image",
-          members: "5",
-          hackathons: "2",
-          projects: "1"),
-      TeamData(
-          name: "Team 3",
-          description: "Team 3 description",
-          image: "https://thispersondoesnotexist.com/image",
-          members: "5",
-          hackathons: "2",
-          projects: "1"),
-      TeamData(
-          name: "Team 4",
-          description: "Team 4 description",
-          image: "https://thispersondoesnotexist.com/image",
-          members: "5",
-          hackathons: "2",
-          projects: "1"),
-      TeamData(
-          name: "Team 5",
-          description: "Team 5 description",
-          image: "https://thispersondoesnotexist.com/image",
-          members: "5",
-          hackathons: "2",
+          hackathons: "1",
           projects: "1"),
     ];
 
@@ -86,7 +71,7 @@ class HackerTeamsShort extends StatelessWidget {
             color: Color.fromARGB(0, 158, 173, 249),
           ),
           child: ListView.builder(
-            itemCount: 3,
+            itemCount: 1,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return Container(
@@ -95,7 +80,7 @@ class HackerTeamsShort extends StatelessWidget {
                 child: Column(children: [
                   CircleAvatar(
                     radius: 58,
-                    backgroundImage: NetworkImage(teams[index].image),
+                    backgroundImage: AssetImage(teams[index].image),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(1.0),

@@ -1,144 +1,58 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collabworks/screens/mainScaffold.dart';
 import 'package:collabworks/ui/find_teammates_screen.dart';
 import 'package:collabworks/ui/hacker_profile.dart';
 import 'package:collabworks/ui/hacker_scaffold.dart';
+import 'package:collabworks/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HackerProfileScreen extends StatelessWidget {
+class HackerProfileScreen extends StatefulWidget {
   const HackerProfileScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HackerProfileScreen> createState() => _HackerProfileScreenState();
+}
+
+class _HackerProfileScreenState extends State<HackerProfileScreen> {
+  String hackerName = "";
+  String hackerEmail = "";
+  String hackerAge = "";
+  String hackerPhoneNumber = "";
+  String hackerProfilePicture = "";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
+
+  void getData() {
+    var data = firestore
+        .collection('hackers')
+        .doc(firebaseAuth.currentUser?.uid ?? '')
+        .get()
+        .then((DocumentSnapshot snapshot) {
+      hackerProfilePicture = snapshot.get('profilePicture');
+      hackerName = snapshot.get('name');
+      hackerAge = snapshot.get('age');
+      hackerEmail = snapshot.get('email');
+      hackerPhoneNumber = snapshot.get('phoneNumber');
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color(0xFF232946),
-      appBar: AppBar(
-        backgroundColor: Color(0xFF232946),
-        title: const Text('CollabWorks'),
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, kToolbarHeight),
+        child: DefaultAppBar(),
       ),
-      drawer: Drawer(
-        backgroundColor: Color(0xFF232946),
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: const BoxDecoration(
-                color: Color(0xFF232946),
-                image: DecorationImage(
-                    image: AssetImage('assets/images/logo.png')),
-              ),
-              child: Container(
-                alignment: Alignment.bottomLeft,
-                child: const Text("",
-                    style: TextStyle(
-                      color: Colors.white,
-                    )),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => HackerProfile(name: 'Armaan')));
-              },
-              child: ListTile(
-                tileColor: Color(0xFF121629),
-                title: Text(
-                  'Home',
-                  style: GoogleFonts.roboto(
-                    color: Color(0xFFb8c1ec),
-                  ),
-                ),
-                onTap: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => HackerProfile(name: 'Armaan')));
-                },
-              ),
-            ),
-            Divider(
-              height: 5,
-              thickness: 1,
-            ),
-            ListTile(
-              tileColor: Color(0xFF121629),
-              title: Text(
-                'Hackathons',
-                style: GoogleFonts.roboto(
-                  color: Color(0xFFb8c1ec),
-                ),
-              ),
-              onTap: () {},
-            ),
-            Divider(
-              height: 5,
-              thickness: 1,
-            ),
-            ListTile(
-              tileColor: Color(0xFF121629),
-              title: Text(
-                'Find Team mates',
-                style: GoogleFonts.roboto(
-                  color: Color(0xFFb8c1ec),
-                ),
-              ),
-              onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => FindTeammatesScreen()));
-              },
-            ),
-            Divider(
-              height: 5,
-              thickness: 1,
-            ),
-            ListTile(
-              tileColor: Color(0xFF121629),
-              title: Text(
-                'Invitations',
-                style: GoogleFonts.roboto(
-                  color: Color(0xFFb8c1ec),
-                ),
-              ),
-              onTap: () {},
-            ),
-            Divider(
-              height: 5,
-              thickness: 1,
-            ),
-            ListTile(
-              tileColor: Color(0xFF121629),
-              title: Text(
-                'Profile',
-                style: GoogleFonts.roboto(
-                  color: Color(0xFFb8c1ec),
-                ),
-              ),
-              onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => FindTeammatesScreen()));
-              },
-            ),
-            Divider(
-              height: 5,
-              thickness: 1,
-            ),
-            ListTile(
-              tileColor: Color(0xFF121629),
-              title: Text(
-                'Settings',
-                style: GoogleFonts.roboto(
-                  color: Color(0xFFb8c1ec),
-                ),
-              ),
-              onTap: () {},
-            ),
-          ],
-        ),
-      ),
+      drawer: DefaultDrawer(),
       body: SingleChildScrollView(
         child: Container(
           child: Column(
@@ -158,8 +72,7 @@ class HackerProfileScreen extends StatelessWidget {
                     backgroundColor: Colors.black,
                     child: CircleAvatar(
                       radius: 40,
-                      backgroundImage: NetworkImage(
-                          'https://previews.123rf.com/images/kritchanut/kritchanut1406/kritchanut140600093/29213195-male-silhouette-avatar-profile-picture.jpg'),
+                      backgroundImage: NetworkImage(hackerProfilePicture),
                     ),
                   ),
                 ),
@@ -195,7 +108,7 @@ class HackerProfileScreen extends StatelessWidget {
                         color: Color(0xFF232946),
                         child: Center(
                           child: Text(
-                            'Armaan',
+                            hackerName,
                             style: GoogleFonts.roboto(
                               fontSize: 32,
                               color: Color(0xFFfffffe),
@@ -218,7 +131,7 @@ class HackerProfileScreen extends StatelessWidget {
                                 height: size.height * 0.03,
                                 color: Color(0xFF232946),
                                 child: Text(
-                                  'Email: armaan33000@gmail.com',
+                                  'Email: $hackerEmail',
                                   style: GoogleFonts.roboto(
                                     fontSize: 18,
                                     color: Color(0xFFb8c1ec),
@@ -234,7 +147,7 @@ class HackerProfileScreen extends StatelessWidget {
                                 alignment: Alignment.centerLeft,
                                 color: Color(0xFF232946),
                                 child: Text(
-                                  'Age: 18',
+                                  'Age: $hackerAge',
                                   style: GoogleFonts.roboto(
                                     fontSize: 14,
                                     color: Color(0xFFb8c1ec),
@@ -249,7 +162,7 @@ class HackerProfileScreen extends StatelessWidget {
                                 alignment: Alignment.centerLeft,
                                 color: Color(0xFF232946),
                                 child: Text(
-                                  'Phone number: 7009280622',
+                                  'Phone number: $hackerPhoneNumber',
                                   style: GoogleFonts.roboto(
                                     fontSize: 14,
                                     color: Color(0xFFb8c1ec),
