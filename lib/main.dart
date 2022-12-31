@@ -1,6 +1,7 @@
-import 'package:collabworks/screens/organization_homepage.dart';
+import 'package:collabworks/screens/organization_hackerView.dart';
 import 'package:collabworks/screens/landing_screen.dart';
 import 'package:collabworks/screens/login_screen.dart';
+import 'package:collabworks/screens/organization_management.dart';
 import 'package:collabworks/screens/organization_signup_screen.dart';
 import 'package:collabworks/screens/organizaton_login_screen.dart';
 import 'package:collabworks/screens/signup_screen.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OrganizationHomepage(),
+      home: OrganizationHackerView(),
     );
   }
 }
