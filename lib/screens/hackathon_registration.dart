@@ -4,6 +4,8 @@ import 'package:collabworks/screens/organization_signup_screen.dart';
 import 'package:collabworks/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'mainScaffold.dart';
 
 class HackathonRegistrationScreen extends StatefulWidget {
@@ -29,6 +31,22 @@ class _HackathonRegistrationScreenState
     super.dispose();
   }
 
+  void pickImage(BuildContext context) async {
+    final ImagePicker _picker = ImagePicker();
+    // Pick an image
+    final XFile? file = await _picker.pickImage(source: ImageSource.gallery);
+
+    if (file == null) {
+      showSnackBar(context, 'Please choose an image');
+    } else {
+      setState(() {
+        File newFile = File(file!.path);
+        image = newFile;
+        print('img is $image');
+      });
+    }
+  }
+
   Widget _buildForm() {
     String? requiredValidator(String? value) {
       if (value == null || value.isEmpty) {
@@ -43,6 +61,50 @@ class _HackathonRegistrationScreenState
 
     return Column(
       children: [
+        image == null
+            ? Container(
+                height: 122,
+                width: 350,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Color(0xFFeebbc3),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: IconButton(
+                  icon: Icon(Icons.upload),
+                  onPressed: () {
+                    pickImage(context);
+                  },
+                ),
+              )
+            : Container(
+                height: 122,
+                width: 300,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.grey[100],
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image(
+                      image: FileImage(image!),
+                      fit: BoxFit.cover,
+                      width: 160,
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        pickImage(context);
+                      },
+                      icon: Icon(Icons.edit),
+                    ),
+                  ],
+                ),
+              ),
+        const SizedBox(
+          height: 20,
+        ),
         HackathonInputField(
           controller: _hackathonNameController,
           label: 'Hackathon Name',
@@ -88,6 +150,7 @@ class _HackathonRegistrationScreenState
         TextField(
           controller: _hackathonStartDate,
           decoration: const InputDecoration(
+            hintStyle: TextStyle(color: Colors.white),
             filled: true,
             fillColor: Color(0xFFb8c1ec),
             border: OutlineInputBorder(),
@@ -111,9 +174,40 @@ class _HackathonRegistrationScreenState
             }
           },
         ),
+        const SizedBox(height: 20),
+        TextField(
+          controller: _hackathonStartDate,
+          decoration: const InputDecoration(
+            hintStyle: TextStyle(color: Colors.white),
+            filled: true,
+            fillColor: Color(0xFFb8c1ec),
+            border: OutlineInputBorder(),
+            prefixIcon: Icon(Icons.calendar_today),
+            counterStyle: TextStyle(color: Colors.white),
+            labelStyle: TextStyle(color: Colors.white),
+            hintText: 'End Date',
+          ),
+          style: TextStyle(
+            color: Colors.white,
+          ),
+          onTap: () async {
+            FocusScope.of(context).requestFocus(FocusNode());
+            DateTime? date = await showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(2000),
+                lastDate: DateTime(2100));
+            if (date != null) {
+              _hackathonStartDate.text = date.toString();
+            }
+          },
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xFFeebbc3),
+            ),
             onPressed: () {
               // Validate returns true if the form is valid, or false otherwise.
               if (_formKey.currentState!.validate()) {
@@ -125,7 +219,12 @@ class _HackathonRegistrationScreenState
                 debugPrint(_formKey.currentState!.toString());
               }
             },
-            child: const Text('Submit'),
+            child: Text(
+              'Submit',
+              style: GoogleFonts.roboto(
+                color: Color(0xFF232946),
+              ),
+            ),
           ),
         ),
       ],
@@ -135,11 +234,122 @@ class _HackathonRegistrationScreenState
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
+        drawer: Drawer(
+          backgroundColor: Color(0xFF232946),
+          // Add a ListView to the drawer. This ensures the user can scroll
+          // through the options in the drawer if there isn't enough vertical
+          // space to fit everything.
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: const BoxDecoration(
+                  color: Color(0xFF232946),
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/logo.png')),
+                ),
+                child: Container(
+                  alignment: Alignment.bottomLeft,
+                  child: const Text("",
+                      style: TextStyle(
+                        color: Colors.white,
+                      )),
+                ),
+              ),
+              ListTile(
+                tileColor: Color(0xFF121629),
+                title: Text(
+                  'Home',
+                  style: GoogleFonts.roboto(
+                    color: Color(0xFFb8c1ec),
+                  ),
+                ),
+                onTap: () {},
+              ),
+              Divider(
+                height: 5,
+                thickness: 1,
+              ),
+              ListTile(
+                tileColor: Color(0xFF121629),
+                title: Text(
+                  'Hackathons',
+                  style: GoogleFonts.roboto(
+                    color: Color(0xFFb8c1ec),
+                  ),
+                ),
+                onTap: () {},
+              ),
+              Divider(
+                height: 5,
+                thickness: 1,
+              ),
+              ListTile(
+                tileColor: Color(0xFF121629),
+                title: Text(
+                  'Find Team mates',
+                  style: GoogleFonts.roboto(
+                    color: Color(0xFFb8c1ec),
+                  ),
+                ),
+                onTap: () {},
+              ),
+              Divider(
+                height: 5,
+                thickness: 1,
+              ),
+              ListTile(
+                tileColor: Color(0xFF121629),
+                title: Text(
+                  'Invitations',
+                  style: GoogleFonts.roboto(
+                    color: Color(0xFFb8c1ec),
+                  ),
+                ),
+                onTap: () {},
+              ),
+              Divider(
+                height: 5,
+                thickness: 1,
+              ),
+              ListTile(
+                tileColor: Color(0xFF121629),
+                title: Text(
+                  'Profile',
+                  style: GoogleFonts.roboto(
+                    color: Color(0xFFb8c1ec),
+                  ),
+                ),
+                onTap: () {},
+              ),
+              Divider(
+                height: 5,
+                thickness: 1,
+              ),
+              ListTile(
+                tileColor: Color(0xFF121629),
+                title: Text(
+                  'Settings',
+                  style: GoogleFonts.roboto(
+                    color: Color(0xFFb8c1ec),
+                  ),
+                ),
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
+        appBar: AppBar(
+          backgroundColor: Color(0xFF232946),
+          title: const Text('CollabWorks'),
+        ),
         child: Container(
             alignment: Alignment.topLeft,
-            padding: const EdgeInsets.only(top: 30, left: 20),
+            padding: const EdgeInsets.only(top: 30, left: 10),
             child: Container(
-              padding: const EdgeInsets.all(50),
+              padding: const EdgeInsets.all(30),
               child: Column(children: [
                 const Text("Register Hackathon",
                     style: TextStyle(
@@ -185,7 +395,10 @@ class HackathonInputField extends StatelessWidget {
         border: const OutlineInputBorder(),
         counterStyle: const TextStyle(color: Colors.white),
         labelStyle: const TextStyle(color: Colors.white),
-        labelText: _label,
+        hintText: _label,
+        hintStyle: const TextStyle(
+          color: Colors.white,
+        ),
         prefixIcon: _prefixIcon,
       ),
       validator: _validator,

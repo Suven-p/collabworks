@@ -2,7 +2,14 @@ import "package:flutter/material.dart";
 
 class MainScaffold extends StatelessWidget {
   final Widget child;
-  const MainScaffold({required this.child, Key? key}) : super(key: key);
+  final Widget appBar;
+  final Widget drawer;
+  const MainScaffold({
+    required this.child,
+    Key? key,
+    required this.drawer,
+    required this.appBar,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +19,11 @@ class MainScaffold extends StatelessWidget {
           color: Color(0xFFfffffe),
         ),
         child: Scaffold(
+            drawer: drawer,
+            appBar: PreferredSize(
+              preferredSize: Size(double.infinity, kToolbarHeight),
+              child: appBar,
+            ),
             backgroundColor: Color(0xFF232946),
             body: SingleChildScrollView(
               child: child,
