@@ -1,36 +1,17 @@
 import 'package:collabworks/screens/hackathon_information.dart';
 import 'package:collabworks/screens/mainScaffold.dart';
+import 'package:collabworks/screens/organization_management.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-class HackathonData {
-  final String name;
-  final String description;
-  final String image;
-  final String members;
-  final String projects;
-
-  const HackathonData(
-      {required this.name,
-      required this.description,
-      required this.image,
-      required this.members,
-      required this.projects});
-}
+import 'package:collabworks/screens/data.dart';
 
 class Hackathons extends StatelessWidget {
-  const Hackathons({Key? key}) : super(key: key);
+  final Stream<List<HackathonData>> hackathonDataStream;
+  const Hackathons({required this.hackathonDataStream, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    const List<HackathonData> hackathons = [
-      HackathonData(
-          name: "Design-a-thon",
-          description: "Show your creativity!",
-          image: "assets/images/thon.png",
-          members: "5",
-          projects: "1"),
-    ];
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, kToolbarHeight),
@@ -64,55 +45,74 @@ class Hackathons extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   child: Container(
                     color: Color(0xFF232946),
-                    child: Column(
-                        children: hackathons
-                            .map((hackathon) => Container(
-                                color: Color(0xFF232946),
-                                padding: const EdgeInsets.only(bottom: 310),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Image(
-                                        image: AssetImage(hackathon.image),
-                                        height: 40,
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(hackathon.name,
-                                              style: TextStyle(
-                                                color: Color(0xFFb8c1ec),
-                                              )),
-                                          Text(hackathon.description,
-                                              style: TextStyle(
-                                                color: Color(0xFFb8c1ec),
-                                              )),
-                                        ],
-                                      ),
-                                      ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor: Color(0xFFeebbc3),
-                                          ),
-                                          onPressed: () => {
-                                                Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            HackathonInformation())),
-                                              },
-                                          child: Text(
-                                            'Check Details',
+                    child: StreamBuilder<List<HackathonData>>(
+                        stream: hackathonDataStream,
+                        builder: (context, snapshot) {
+                          final hackathons = snapshot.data ?? [];
+                          return Column(
+                              children: hackathons.map((hackathon) {
+                            String truncateWithEllipsis(
+                                int cutoff, String myString) {
+                              return (myString.length <= cutoff)
+                                  ? myString
+                                  : '${myString.substring(0, cutoff)}...';
+                            }
+
+                            return Container(
+                              color: Color(0xFF232946),
+                              padding: const EdgeInsets.only(bottom: 310),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Image(
+                                      image: AssetImage(hackathon.image),
+                                      height: 40,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(hackathon.name,
                                             style: TextStyle(
-                                              color: Color(0xFF232946),
-                                            ),
-                                          )),
-                                    ],
-                                  ),
-                                )))
-                            .toList()),
+                                              color: Color(0xFFb8c1ec),
+                                            )),
+                                        Text(
+                                            truncateWithEllipsis(
+                                                20, hackathon.description),
+                                            style: TextStyle(
+                                              color: Color(0xFFb8c1ec),
+                                            )),
+                                      ],
+                                    ),
+                                    ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: Color(0xFFeebbc3),
+                                        ),
+                                        onPressed: () {
+                                          final String name = hackathon.name;
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      HackathonInformation(
+                                                          hackathonDataStream:
+                                                              getHackathonData(
+                                                                  name))));
+                                        },
+                                        child: Text(
+                                          'Check Details',
+                                          style: TextStyle(
+                                            color: Color(0xFF232946),
+                                          ),
+                                        )),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }).toList());
+                        }),
                   ))
             ],
           )),

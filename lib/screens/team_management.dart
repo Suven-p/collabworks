@@ -1,10 +1,6 @@
-import 'package:collabworks/ui/hacker_hackathons.dart';
 import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
 import 'package:collabworks/screens/mainScaffold.dart';
-import 'package:mailto/mailto.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class TeamData {
   String name, hackathon, image, description;
@@ -33,7 +29,7 @@ class TeamManagement extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return MainScaffold(
-      drawer: DefaultDrawer(),
+      drawer: const DefaultDrawer(),
       appBar: DefaultAppBar(),
       child: Theme(
           data: Theme.of(context).copyWith(),
@@ -45,7 +41,7 @@ class TeamManagement extends StatelessWidget {
                   height: 20,
                 ),
                 SizedBox(height: 80, child: Image.network(teamData.image)),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Center(
                   child: Text(
                     teamData.name,
@@ -70,7 +66,7 @@ class TeamManagement extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       )),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   Text(teamData.hackathon,
                       style: GoogleFonts.roboto(
                         color: Colors.white,
@@ -89,7 +85,7 @@ class TeamManagement extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: teamData.members
                         .map((String member) => Container(
-                              padding: EdgeInsets.only(bottom: 10),
+                              padding: const EdgeInsets.only(bottom: 10),
                               alignment: Alignment.topLeft,
                               child: Row(
                                   mainAxisAlignment:
@@ -101,7 +97,7 @@ class TeamManagement extends StatelessWidget {
                                         color: Colors.white,
                                       ),
                                     ),
-                                    Icon(
+                                    const Icon(
                                       Icons.message,
                                       color: Color.fromARGB(255, 18, 184, 245),
                                     )
@@ -119,7 +115,7 @@ Widget TeamInfo(TeamData teams) {
   return Table(children: [
     TableRow(
       children: [
-        Text("Hackathon"),
+        const Text("Hackathon"),
         Text(teams.hackathon),
       ],
     )

@@ -17,14 +17,13 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    Timer(Duration(milliseconds: 2500), () {
+    Timer(const Duration(milliseconds: 2500), () {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
               builder: (context) => firebaseAuth.currentUser != null
-                  ? HackerProfile(name: "Armaan")
+                  ? const HackerProfile(name: "Armaan")
                   : LoginScreen()));
     });
   }
@@ -48,7 +47,7 @@ class _LandingPageState extends State<LandingPage> {
     }
 
     return Material(
-        color: Color(0xFF232946),
+        color: const Color(0xFF232946),
         textStyle: const TextStyle(
           color: Color(0xFFfffffe),
         ),
@@ -72,7 +71,7 @@ class _LandingPageState extends State<LandingPage> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Image(
+                child: const Image(
                   image: AssetImage('assets/images/logo.png'),
                 ),
               ),
@@ -87,7 +86,7 @@ class _LandingPageState extends State<LandingPage> {
                     child: Text(
                       "Sign Up",
                       style: GoogleFonts.roboto(
-                        color: Color(0xFFb8c1ec),
+                        color: const Color(0xFFb8c1ec),
                         fontSize: 18,
                       ),
                     ),

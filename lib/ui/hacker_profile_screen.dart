@@ -1,8 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collabworks/screens/mainScaffold.dart';
-import 'package:collabworks/ui/find_teammates_screen.dart';
-import 'package:collabworks/ui/hacker_profile.dart';
-import 'package:collabworks/ui/hacker_scaffold.dart';
 import 'package:collabworks/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -47,12 +44,12 @@ class _HackerProfileScreenState extends State<HackerProfileScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Color(0xFF232946),
+      backgroundColor: const Color(0xFF232946),
       appBar: PreferredSize(
-        preferredSize: Size(double.infinity, kToolbarHeight),
+        preferredSize: const Size(double.infinity, kToolbarHeight),
         child: DefaultAppBar(),
       ),
-      drawer: DefaultDrawer(),
+      drawer: const DefaultDrawer(),
       body: SingleChildScrollView(
         child: Container(
           child: Column(
@@ -63,7 +60,7 @@ class _HackerProfileScreenState extends State<HackerProfileScreen> {
               Container(
                 width: double.infinity,
                 height: size.height * 0.2,
-                color: Color(0xFFeebbc3),
+                color: const Color(0xFFeebbc3),
                 alignment: Alignment.center,
                 child: Padding(
                   padding: const EdgeInsets.all(28.0),
@@ -78,7 +75,7 @@ class _HackerProfileScreenState extends State<HackerProfileScreen> {
                 ),
               ),
               Container(
-                color: Color(0xFF232946),
+                color: const Color(0xFF232946),
                 child: Column(
                   children: [
                     const SizedBox(
@@ -105,13 +102,13 @@ class _HackerProfileScreenState extends State<HackerProfileScreen> {
                       child: Container(
                         width: size.width * 0.4,
                         height: size.height * 0.05,
-                        color: Color(0xFF232946),
+                        color: const Color(0xFF232946),
                         child: Center(
                           child: Text(
                             hackerName,
                             style: GoogleFonts.roboto(
                               fontSize: 32,
-                              color: Color(0xFFfffffe),
+                              color: const Color(0xFFfffffe),
                             ),
                           ),
                         ),
@@ -129,12 +126,12 @@ class _HackerProfileScreenState extends State<HackerProfileScreen> {
                                 alignment: Alignment.centerLeft,
                                 width: size.width * 0.9,
                                 height: size.height * 0.03,
-                                color: Color(0xFF232946),
+                                color: const Color(0xFF232946),
                                 child: Text(
                                   'Email: $hackerEmail',
                                   style: GoogleFonts.roboto(
                                     fontSize: 18,
-                                    color: Color(0xFFb8c1ec),
+                                    color: const Color(0xFFb8c1ec),
                                   ),
                                 ),
                               ),
@@ -145,12 +142,12 @@ class _HackerProfileScreenState extends State<HackerProfileScreen> {
                                 width: size.width * 0.9,
                                 height: size.height * 0.05,
                                 alignment: Alignment.centerLeft,
-                                color: Color(0xFF232946),
+                                color: const Color(0xFF232946),
                                 child: Text(
                                   'Age: $hackerAge',
                                   style: GoogleFonts.roboto(
                                     fontSize: 14,
-                                    color: Color(0xFFb8c1ec),
+                                    color: const Color(0xFFb8c1ec),
                                   ),
                                 ),
                               ),
@@ -160,12 +157,12 @@ class _HackerProfileScreenState extends State<HackerProfileScreen> {
                                 width: size.width * 0.9,
                                 height: size.height * 0.05,
                                 alignment: Alignment.centerLeft,
-                                color: Color(0xFF232946),
+                                color: const Color(0xFF232946),
                                 child: Text(
                                   'Phone number: $hackerPhoneNumber',
                                   style: GoogleFonts.roboto(
                                     fontSize: 14,
-                                    color: Color(0xFFb8c1ec),
+                                    color: const Color(0xFFb8c1ec),
                                   ),
                                 ),
                               ),

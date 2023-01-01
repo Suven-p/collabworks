@@ -1,3 +1,4 @@
+import 'package:collabworks/screens/data.dart';
 import 'package:collabworks/ui/find_teammates_screen.dart';
 import 'package:collabworks/ui/hackathons.dart';
 import 'package:collabworks/ui/hacker_hackathons.dart';
@@ -62,8 +63,10 @@ class DefaultDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => Hackathons()));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => Hackathons(
+                        hackathonDataStream: getHackathons("MLH"),
+                      )));
             },
           ),
           const Divider(

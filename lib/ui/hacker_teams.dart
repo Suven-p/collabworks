@@ -77,21 +77,23 @@ class _HackerTeamsShortState extends State<HackerTeamsShort> {
               return Container(
                 padding: const EdgeInsets.all(3),
                 height: 130,
-                child: Column(children: [
-                  CircleAvatar(
-                    radius: 58,
-                    backgroundImage: AssetImage(teams[index].image),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(1.0),
-                    child: Text(
-                      teams[index].name,
-                      style: TextStyle(
-                        color: Color(0xFFb8c1ec),
-                      ),
+                child: SingleChildScrollView(
+                  child: Column(children: [
+                    CircleAvatar(
+                      radius: 58,
+                      backgroundImage: AssetImage(teams[index].image),
                     ),
-                  )
-                ]),
+                    Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: Text(
+                        teams[index].name,
+                        style: TextStyle(
+                          color: Color(0xFFb8c1ec),
+                        ),
+                      ),
+                    )
+                  ]),
+                ),
               );
             },
           ))

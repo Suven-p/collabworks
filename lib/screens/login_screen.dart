@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Material(
-      color: Color(0xFF232946),
+      color: const Color(0xFF232946),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -41,10 +41,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: size.height * 0.56,
                 width: 300,
                 alignment: Alignment.topLeft,
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(2),
-                  color: Color(0xFF232946),
+                  color: const Color(0xFF232946),
                   // border: Border.all(
                   //   color: Colors.white,
                   // ),
@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: GoogleFonts.roboto(
                               fontSize: 28,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xFFfffffe),
+                              color: const Color(0xFFfffffe),
                             )),
                       ),
                       const SizedBox(height: 1),
@@ -72,10 +72,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: GoogleFonts.roboto(
                               fontSize: 19,
                               fontWeight: FontWeight.w300,
-                              color: Color(0xFFfffffe),
+                              color: const Color(0xFFfffffe),
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       SizedBox(
@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: 280,
                           child: TextField(
                             controller: _emailController,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               filled: true,
                               fillColor: Color(0xFFb8c1ec),
                               border: OutlineInputBorder(),
@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               hintText: " E-Mail",
                             ),
                           )),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       SizedBox(
@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 280,
                         child: TextField(
                           controller: _passwordController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               filled: true,
                               fillColor: Color(0xFFb8c1ec),
                               border: OutlineInputBorder(),
@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             'New to CollabWorks?',
                             style: GoogleFonts.roboto(
                               fontSize: 16,
-                              color: Color(0xFFb8c1ec),
+                              color: const Color(0xFFb8c1ec),
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -136,16 +136,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           margin: const EdgeInsets.symmetric(horizontal: 10),
                           height: size.height * 0.056,
                           alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFeebbc3),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                           child: Text(
                             'Log In!',
                             style: GoogleFonts.lato(
                               color: Color(0xFF232946),
                               fontSize: 16,
                             ),
-                          ),
-                          decoration: BoxDecoration(
-                            color: Color(0xFFeebbc3),
-                            borderRadius: BorderRadius.circular(12),
                           ),
                         ),
                       ),

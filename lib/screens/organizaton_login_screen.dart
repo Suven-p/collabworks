@@ -1,15 +1,13 @@
-import 'dart:io';
-
 import 'package:collabworks/controllers/auth_controller.dart';
 import 'package:collabworks/screens/login_screen.dart';
 import 'package:collabworks/screens/organization_signup_screen.dart';
-import 'package:collabworks/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
 
 class OrganizationLogInScreen extends StatefulWidget {
+  const OrganizationLogInScreen({super.key});
+
   @override
   State<OrganizationLogInScreen> createState() =>
       _OrganizationLogInScreenState();
@@ -21,7 +19,6 @@ class _OrganizationLogInScreenState extends State<OrganizationLogInScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
@@ -36,12 +33,12 @@ class _OrganizationLogInScreenState extends State<OrganizationLogInScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-        backgroundColor: Color(0xFF232946),
+        backgroundColor: const Color(0xFF232946),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(4.0),
             child: Container(
-              color: Color(0xFF232946),
+              color: const Color(0xFF232946),
               height: size.height * 0.8,
               child: Padding(
                 padding: const EdgeInsets.all(18.0),
@@ -57,7 +54,7 @@ class _OrganizationLogInScreenState extends State<OrganizationLogInScreen> {
                       style: GoogleFonts.roboto(
                         fontSize: 21,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFFfffffe),
+                        color: const Color(0xFFfffffe),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -66,7 +63,7 @@ class _OrganizationLogInScreenState extends State<OrganizationLogInScreen> {
                       style: GoogleFonts.roboto(
                         fontSize: 17,
                         fontWeight: FontWeight.w300,
-                        color: Color(0xFFfffffe),
+                        color: const Color(0xFFfffffe),
                       ),
                     ),
                     const SizedBox(
@@ -74,7 +71,7 @@ class _OrganizationLogInScreenState extends State<OrganizationLogInScreen> {
                     ),
                     TextField(
                       controller: _emailController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
                         border: OutlineInputBorder(),
@@ -87,7 +84,7 @@ class _OrganizationLogInScreenState extends State<OrganizationLogInScreen> {
                     ),
                     TextField(
                       controller: _passwordController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         filled: true,
                         fillColor: Color(0xFFb8c1ec),
                         border: OutlineInputBorder(),
@@ -110,7 +107,7 @@ class _OrganizationLogInScreenState extends State<OrganizationLogInScreen> {
                             'Are you a hacker?',
                             style: GoogleFonts.roboto(
                               fontSize: 13,
-                              color: Color(0xFFb8c1ec),
+                              color: const Color(0xFFb8c1ec),
                             ),
                           ),
                         ),
@@ -129,7 +126,7 @@ class _OrganizationLogInScreenState extends State<OrganizationLogInScreen> {
                             'New Organization?',
                             style: GoogleFonts.roboto(
                               fontSize: 13,
-                              color: Color(0xFFb8c1ec),
+                              color: const Color(0xFFb8c1ec),
                             ),
                           ),
                         ),
@@ -147,16 +144,16 @@ class _OrganizationLogInScreenState extends State<OrganizationLogInScreen> {
                         margin: const EdgeInsets.symmetric(horizontal: 10),
                         height: size.height * 0.056,
                         alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFeebbc3),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                         child: Text(
                           'Log In!',
                           style: GoogleFonts.lato(
-                            color: Color(0xFF232946),
+                            color: const Color(0xFF232946),
                             fontSize: 16,
                           ),
-                        ),
-                        decoration: BoxDecoration(
-                          color: Color(0xFFeebbc3),
-                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
                     ),
