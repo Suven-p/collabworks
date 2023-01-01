@@ -54,20 +54,27 @@ class HackathonInformation extends StatelessWidget {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+            padding: const EdgeInsets.only(left: 15.0, right: 20.0),
             child: Column(
               children: [
                 const SizedBox(
                   height: 50,
                 ),
-                Center(
-                  child: Text(
-                    hackathonData.name,
-                    style: GoogleFonts.roboto(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5.0, right: 15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        hackathonData.name,
+                        style: GoogleFonts.roboto(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      ElevatedButton(onPressed: () {}, child: Text('Join'))
+                    ],
                   ),
                 ),
                 const SizedBox(
@@ -80,6 +87,7 @@ class HackathonInformation extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                     ),
+                    textAlign: TextAlign.justify,
                   ),
                 ),
                 SizedBox(height: 30),
