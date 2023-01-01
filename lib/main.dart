@@ -1,6 +1,7 @@
 import 'package:collabworks/screens/hackathon_information.dart';
 import 'package:collabworks/screens/landing_screen.dart';
 import 'package:collabworks/screens/messages_screen.dart';
+import 'package:collabworks/screens/project_submission_screen.dart';
 import 'package:collabworks/screens/teamCreation.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

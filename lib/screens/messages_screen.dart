@@ -58,7 +58,7 @@ class _MyMessagingScreenState extends State<MyMessagingScreen> {
                   );
                 }
 
-                final messages = snapshot.data!.docs.reversed;
+                final messages = snapshot.data!.docs;
                 List<Widget> messageWidgets = [];
                 for (var message in messages) {
                   final messageText = message['text'];
@@ -97,7 +97,7 @@ class _MyMessagingScreenState extends State<MyMessagingScreen> {
                     Expanded(
                       child: TextField(
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                         ),
                         controller: _textController,
                         decoration: InputDecoration(

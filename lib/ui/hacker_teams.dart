@@ -67,45 +67,58 @@ class _HackerTeamsShortState extends State<HackerTeamsShort> {
                     style: const TextStyle(color: Colors.blue)))
           ],
         ),
-        Opacity(
-          opacity: hasTeam == true ? 1 : 0,
-          child: Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(3),
-              height: 148,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(10),
-                color: Color.fromARGB(0, 158, 173, 249),
-              ),
-              child: ListView.builder(
-                itemCount: 1,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return Container(
+        hasTeam == true
+            ? Opacity(
+                opacity: hasTeam == true ? 1 : 0,
+                child: Container(
+                    alignment: Alignment.center,
                     padding: const EdgeInsets.all(3),
-                    height: 130,
-                    child: SingleChildScrollView(
-                      child: Column(children: [
-                        CircleAvatar(
-                          radius: 58,
-                          backgroundImage: AssetImage(teams[index].image),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(1.0),
-                          child: Text(
-                            teams[index].name,
-                            style: TextStyle(
-                              color: Color(0xFFb8c1ec),
-                            ),
-                          ),
-                        )
-                      ]),
+                    height: 148,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color.fromARGB(0, 158, 173, 249),
                     ),
-                  );
-                },
-              )),
-        )
+                    child: ListView.builder(
+                      itemCount: 1,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          padding: const EdgeInsets.all(3),
+                          height: 130,
+                          child: SingleChildScrollView(
+                            child: Column(children: [
+                              CircleAvatar(
+                                radius: 58,
+                                backgroundImage: AssetImage(teams[index].image),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(1.0),
+                                child: Text(
+                                  teams[index].name,
+                                  style: TextStyle(
+                                    color: Color(0xFFb8c1ec),
+                                  ),
+                                ),
+                              )
+                            ]),
+                          ),
+                        );
+                      },
+                    )),
+              )
+            : Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(3),
+                height: 148,
+                child: Text(
+                  'No teams yet!',
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
       ]),
     );
   }
