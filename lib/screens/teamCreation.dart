@@ -148,7 +148,7 @@ class TeamMemberFormField extends StatefulWidget {
 class _TeamMemberFormFieldState extends State<TeamMemberFormField> {
   final _editableKey = GlobalKey<EditableState>();
 
-  final rows = [
+  List rows = [
     {
       "name": "ARMAAN",
       "email": "armaan33000@email.com",
@@ -156,7 +156,7 @@ class _TeamMemberFormFieldState extends State<TeamMemberFormField> {
   ];
 
 //Headers or Columns
-  final headers = [
+  List headers = [
     {"title": "\nName", 'index': 1, "key": "name", "widthFactor": 0.3},
     {"title": "\nEmail", 'index': 2, "key": "email", "widthFactor": 0.4},
   ];
@@ -184,36 +184,32 @@ class _TeamMemberFormFieldState extends State<TeamMemberFormField> {
                 saveIcon: Icons.save,
                 saveIconColor: Colors.blue,
                 saveIconSize: 30,
-                // onRowSaved: (value) {
-                //   // if (value.get('row') > rows.length - 1) {
-                //   //   rows.add({
-                //   //     "name": value['name'],
-                //   //     "email": value['email'],
-                //   //   });
-                //   // } else {
-                //   //   rows[value['row']]['name'] = value['name'];
-                //   //   rows[value['row']]['email'] = value['email'];
-                //   // }
-
-                //   print({'action': 'save', 'value': value});
-                // },
+                onRowSaved: (value) {
+                  if (value['row'] > rows.length - 1) {
+                    rows.add({
+                      "name": value['name'],
+                      "email": value['email'],
+                    });
+                  } else {
+                    rows[value['row']]['name'] = value['name'];
+                    rows[value['row']]['email'] = value['email'];
+                  }
+                },
                 onSubmitted: (value) {
                   //new line
                   print(rows);
-                  print(_editableKey.currentState?.editedRows ??
-                      'nkone'); //you can grab this data to store anywhere
+                  // print(_editableKey.currentState?.editedRows ??
+                  //     'nkone'); //you can grab this data to store anywhere
                 },
               ),
             ),
           ),
           ElevatedButton(
               onPressed: () {
-                print(rows);
                 hasTeam = true;
                 setState(() {});
-                print(rows);
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => HackerProfile(name: 'Armaan')));
+                // Navigator.of(context).push(MaterialPageRoute(
+                //     builder: (context) => HackerProfile(name: 'Armaan')));
               },
               child: Text("Submit"))
         ],
