@@ -146,7 +146,9 @@ class TeamMemberFormField extends StatefulWidget {
 }
 
 class _TeamMemberFormFieldState extends State<TeamMemberFormField> {
-  List rows = [
+  final _editableKey = GlobalKey<EditableState>();
+
+  final rows = [
     {
       "name": "ARMAAN",
       "email": "armaan33000@email.com",
@@ -154,7 +156,7 @@ class _TeamMemberFormFieldState extends State<TeamMemberFormField> {
   ];
 
 //Headers or Columns
-  List headers = [
+  final headers = [
     {"title": "\nName", 'index': 1, "key": "name", "widthFactor": 0.3},
     {"title": "\nEmail", 'index': 2, "key": "email", "widthFactor": 0.4},
   ];
@@ -167,6 +169,7 @@ class _TeamMemberFormFieldState extends State<TeamMemberFormField> {
           Expanded(
             child: Center(
               child: Editable(
+                key: _editableKey,
                 borderWidth: 0.1,
                 borderColor: Colors.grey,
                 columnCount: 2,
@@ -181,10 +184,24 @@ class _TeamMemberFormFieldState extends State<TeamMemberFormField> {
                 saveIcon: Icons.save,
                 saveIconColor: Colors.blue,
                 saveIconSize: 30,
+                // onRowSaved: (value) {
+                //   // if (value.get('row') > rows.length - 1) {
+                //   //   rows.add({
+                //   //     "name": value['name'],
+                //   //     "email": value['email'],
+                //   //   });
+                //   // } else {
+                //   //   rows[value['row']]['name'] = value['name'];
+                //   //   rows[value['row']]['email'] = value['email'];
+                //   // }
+
+                //   print({'action': 'save', 'value': value});
+                // },
                 onSubmitted: (value) {
                   //new line
-
-                  print(value); //you can grab this
+                  print(rows);
+                  print(_editableKey.currentState?.editedRows ??
+                      'nkone'); //you can grab this data to store anywhere
                 },
               ),
             ),
