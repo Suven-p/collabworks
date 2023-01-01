@@ -6,6 +6,7 @@ import 'package:collabworks/screens/login_screen.dart';
 import 'package:collabworks/screens/mainScaffold.dart';
 import 'package:collabworks/screens/organization_signup_screen.dart';
 import 'package:collabworks/screens/organizaton_login_screen.dart';
+import 'package:collabworks/ui/hacker_profile.dart';
 import 'package:collabworks/ui/hacker_scaffold.dart';
 import 'package:collabworks/utils/utils.dart';
 import 'package:editable/editable.dart';
@@ -149,8 +150,8 @@ class _TeamMemberFormFieldState extends State<TeamMemberFormField> {
 
   final rows = [
     {
-      "name": "James Peter",
-      "email": "james@email.com",
+      "name": "ARMAAN",
+      "email": "armaan33000@email.com",
     },
   ];
 
@@ -208,6 +209,11 @@ class _TeamMemberFormFieldState extends State<TeamMemberFormField> {
           ElevatedButton(
               onPressed: () {
                 print(rows);
+                hasTeam = true;
+                setState(() {});
+                print(rows);
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => HackerProfile(name: 'Armaan')));
               },
               child: Text("Submit"))
         ],

@@ -1,22 +1,137 @@
 import 'package:collabworks/screens/mainScaffold.dart';
+import 'package:collabworks/ui/message_widget.dart';
+import 'package:collabworks/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class MessagesScreen extends StatefulWidget {
-  const MessagesScreen({Key? key}) : super(key: key);
-
+class MyMessagingScreen extends StatefulWidget {
   @override
-  State<MessagesScreen> createState() => _MessagesScreenState();
+  _MyMessagingScreenState createState() => _MyMessagingScreenState();
 }
 
-class _MessagesScreenState extends State<MessagesScreen> {
+class _MyMessagingScreenState extends State<MyMessagingScreen> {
+  String hackerName = "";
+  void getData() {
+    var data = _firestore
+        .collection('hackers')
+        .doc(firebaseAuth.currentUser?.uid ?? '')
+        .get()
+        .then((DocumentSnapshot snapshot) {
+      hackerName = snapshot.get('name');
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
+
+  final _firestore = firestore;
+  final _textController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DefaultDrawer(),
+      backgroundColor: Color(0xFF232946),
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, kToolbarHeight),
         child: DefaultAppBar(),
       ),
-      drawer: DefaultDrawer(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            child: StreamBuilder(
+              stream: _firestore
+                  .collection('teams')
+                  .doc('MLH TEAM')
+                  .collection('messages')
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+
+                final messages = snapshot.data!.docs.reversed;
+                List<Widget> messageWidgets = [];
+                for (var message in messages) {
+                  final messageText = message['text'];
+                  final messageSender = message['sender'];
+
+                  final messageWidget = MessageWidget(
+                    message: messageText,
+                    sender: 'Armaan',
+                  );
+
+                  messageWidgets.add(messageWidget);
+                }
+                return ListView(
+                  reverse: true,
+                  children: messageWidgets,
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color(0xFFb8c1ec),
+                border: Border(
+                  top: BorderSide(
+                    color: Colors.grey,
+                    width: 1.0,
+                  ),
+                ),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: TextField(
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                        controller: _textController,
+                        decoration: InputDecoration(
+                          hintText: 'Enter your message...',
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        _firestore
+                            .collection('teams')
+                            .doc('MLH TEAM')
+                            .collection('messages')
+                            .add({
+                          'text': _textController.text,
+                          'sender': hackerName,
+                        });
+                        _textController.clear();
+                      },
+                      child: Text(
+                        'Send',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
