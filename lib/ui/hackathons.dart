@@ -97,6 +97,8 @@ class Hackathons extends StatelessWidget {
                                               MaterialPageRoute(
                                                   builder: (context) =>
                                                       HackathonInformation(
+                                                          viewPoint:
+                                                              'organization',
                                                           hackathonDataStream:
                                                               getHackathonData(
                                                                   name))));

@@ -5,8 +5,10 @@ import 'data.dart';
 
 class HackathonInformation extends StatelessWidget {
   final Stream<HackathonData> hackathonDataStream;
+  final String viewPoint;
 
-  const HackathonInformation({required this.hackathonDataStream, Key? key})
+  const HackathonInformation(
+      {required this.viewPoint, required this.hackathonDataStream, Key? key})
       : super(key: key);
 
   @override
@@ -138,7 +140,11 @@ class HackathonInformation extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 30),
-                      TeamsTable(hackathonData.teams),
+                      (viewPoint == 'hacker')
+                          ? ElevatedButton(
+                              onPressed: () {},
+                              child: const Text('Join Hackathon'))
+                          : TeamsTable(hackathonData.teams),
                     ],
                   ),
                 );
