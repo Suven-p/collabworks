@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Material(
-      color: Color(0xFF232946),
+      color: const Color(0xFF232946),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -41,114 +41,116 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: size.height * 0.56,
                 width: 300,
                 alignment: Alignment.topLeft,
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(2),
-                  color: Color(0xFF232946),
+                  color: const Color(0xFF232946),
                   // border: Border.all(
                   //   color: Colors.white,
                   // ),
                 ),
                 // color: Colors.blueGrey,
                 transformAlignment: Alignment.center,
-                child: Column(
-                  children: [
-                    // Icon(CupertinoIcons.mail)
-                    const SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text('WELCOME BACK!',
-                          style: GoogleFonts.roboto(
-                            fontSize: 28,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xFFfffffe),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      // Icon(CupertinoIcons.mail)
+                      const SizedBox(height: 10),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('WELCOME BACK!',
+                            style: GoogleFonts.roboto(
+                              fontSize: 28,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xFFfffffe),
+                            )),
+                      ),
+                      const SizedBox(height: 1),
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text('We are happy to see you back!',
+                            style: GoogleFonts.roboto(
+                              fontSize: 19,
+                              fontWeight: FontWeight.w300,
+                              color: const Color(0xFFfffffe),
+                            )),
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      SizedBox(
+                          height: 90,
+                          width: 280,
+                          child: TextField(
+                            controller: _emailController,
+                            decoration: const InputDecoration(
+                              filled: true,
+                              fillColor: Color(0xFFb8c1ec),
+                              border: OutlineInputBorder(),
+                              prefixIcon: Icon(CupertinoIcons.mail),
+                              hintText: " E-Mail",
+                            ),
                           )),
-                    ),
-                    const SizedBox(height: 1),
-                    Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Text('We are happy to see you back!',
-                          style: GoogleFonts.roboto(
-                            fontSize: 19,
-                            fontWeight: FontWeight.w300,
-                            color: Color(0xFFfffffe),
-                          )),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    SizedBox(
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      SizedBox(
                         height: 90,
                         width: 280,
                         child: TextField(
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Color(0xFFb8c1ec),
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(CupertinoIcons.mail),
-                            hintText: " E-Mail",
-                          ),
-                        )),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                      height: 90,
-                      width: 280,
-                      child: TextField(
-                        controller: _passwordController,
-                        decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Color(0xFFb8c1ec),
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(CupertinoIcons.padlock_solid),
-                            hintText: "Password"),
-                      ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      alignment: Alignment.bottomRight,
-                      child: InkWell(
-                        onTap: () => Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                                builder: (context) => SignUpScreen())),
-                        child: Text(
-                          'New to CollabWorks?',
-                          style: GoogleFonts.roboto(
-                            fontSize: 16,
-                            color: Color(0xFFb8c1ec),
-                            fontWeight: FontWeight.w400,
-                          ),
+                          controller: _passwordController,
+                          decoration: const InputDecoration(
+                              filled: true,
+                              fillColor: Color(0xFFb8c1ec),
+                              border: OutlineInputBorder(),
+                              prefixIcon: Icon(CupertinoIcons.padlock_solid),
+                              hintText: "Password"),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 14,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        login(context);
-                      },
-                      child: Container(
+                      Container(
                         width: double.infinity,
-                        margin: const EdgeInsets.symmetric(horizontal: 10),
-                        height: size.height * 0.056,
-                        alignment: Alignment.center,
-                        child: Text(
-                          'Log In!',
-                          style: GoogleFonts.lato(
-                            color: Color(0xFF232946),
-                            fontSize: 16,
+                        alignment: Alignment.bottomRight,
+                        child: InkWell(
+                          onTap: () => Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => SignUpScreen())),
+                          child: Text(
+                            'New to CollabWorks?',
+                            style: GoogleFonts.roboto(
+                              fontSize: 16,
+                              color: const Color(0xFFb8c1ec),
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
-                        decoration: BoxDecoration(
-                          color: Color(0xFFeebbc3),
-                          borderRadius: BorderRadius.circular(12),
+                      ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          login(context);
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          height: size.height * 0.056,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFeebbc3),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            'Log In!',
+                            style: GoogleFonts.lato(
+                              color: Color(0xFF232946),
+                              fontSize: 16,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 )),
           ),
         ],

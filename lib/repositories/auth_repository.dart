@@ -1,6 +1,7 @@
 import 'package:collabworks/models/hackathon_model.dart';
 import 'package:collabworks/models/hacker_model.dart';
 import 'package:collabworks/models/organization_model.dart';
+import 'package:collabworks/screens/organization_management.dart';
 import 'package:collabworks/ui/hacker_profile.dart';
 import 'package:collabworks/utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -150,8 +151,8 @@ class AuthRepository {
           .doc(model.name)
           .set(newModel.toMap())
           .then((value) {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context) => HackerProfile(name: 'Armaan')));
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => OrganizationManagement()));
       });
     } catch (e) {
       showSnackBar(context, e.toString());

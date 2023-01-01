@@ -5,8 +5,8 @@ import 'package:collabworks/screens/hackathon_registration.dart';
 import 'package:collabworks/utils/utils.dart';
 import "package:flutter/material.dart";
 import 'package:collabworks/screens/mainScaffold.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:collabworks/screens/data.dart';
 
 class OrganizationData {
   String name, description, website, email, phone, address, image;
@@ -23,18 +23,8 @@ class OrganizationData {
   });
 }
 
-class HackathonData {
-  String name, startDate, endDate, description;
-  HackathonData({
-    required this.name,
-    required this.startDate,
-    required this.endDate,
-    required this.description,
-  });
-}
-
 class OrganizationManagement extends StatefulWidget {
-  OrganizationManagement({Key? key}) : super(key: key);
+  const OrganizationManagement({Key? key}) : super(key: key);
 
   @override
   State<OrganizationManagement> createState() => _OrganizationManagementState();
@@ -69,11 +59,7 @@ class _OrganizationManagementState extends State<OrganizationManagement> {
       address: "Organization Address",
       image: "assets/images/mlh.png",
       hackathons: [
-        HackathonData(
-            name: "Design-a-thon",
-            startDate: "23/12",
-            endDate: "15/12",
-            description: "show your creativity!"),
+        designathon(),
       ]);
 
   void deleteAtIndex(int index) {
@@ -85,7 +71,7 @@ class _OrganizationManagementState extends State<OrganizationManagement> {
 
   Widget createTable(List<HackathonData> hackathons) {
     return DataTable(
-      columns: [
+      columns: const [
         DataColumn(label: Text("Name")),
         DataColumn(label: Text("Duration")),
         DataColumn(label: Text("Actions")),
@@ -108,11 +94,11 @@ class _OrganizationManagementState extends State<OrganizationManagement> {
                           child: FloatingActionButton(
                             onPressed: () {},
                             tooltip: "Edit",
-                            child: Icon(
+                            child: const Icon(
                               Icons.edit,
                             ),
                           )),
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
                       Padding(
                         padding: const EdgeInsets.only(right: 18.0),
                         child: SizedBox(
@@ -123,7 +109,7 @@ class _OrganizationManagementState extends State<OrganizationManagement> {
                                 deleteAtIndex(idx);
                               },
                               tooltip: "Delete",
-                              child: Icon(
+                              child: const Icon(
                                 Icons.delete,
                               ),
                             )),
@@ -141,7 +127,7 @@ class _OrganizationManagementState extends State<OrganizationManagement> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return MainScaffold(
-      drawer: DefaultDrawer(),
+      drawer: const OrganizationDrawer(),
       appBar: DefaultAppBar(),
       child: Theme(
         data: Theme.of(context).copyWith(
@@ -159,16 +145,17 @@ class _OrganizationManagementState extends State<OrganizationManagement> {
                 SizedBox(
                   height: 150,
                   width: size.width,
-                  child: Image(
+                  child: const Image(
                     image: AssetImage('assets/images/mlh.png'),
                   ),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => HackathonRegistrationScreen()));
+                        builder: (context) =>
+                            const HackathonRegistrationScreen()));
                   },
-                  child: Text("Create new hackathon"),
+                  child: const Text("Create new hackathon"),
                 ),
                 Text("Hackathons",
                     style: GoogleFonts.roboto(

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:collabworks/screens/login_screen.dart';
+import 'package:collabworks/screens/organization_management.dart';
 import 'package:collabworks/screens/signup_screen.dart';
 import 'package:collabworks/ui/hacker_profile.dart';
 import 'package:collabworks/utils/utils.dart';
@@ -17,16 +18,46 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    Timer(Duration(milliseconds: 2500), () {
-      Navigator.pushReplacement(
+
+    getData();
+  }
+
+  void getData() {
+    String status = "";
+
+    try {
+      var data = firestore
+          .collection('hackers')
+          .doc(firebaseAuth.currentUser?.uid ?? '')
+          .get()
+          .then((value) {
+        status = "hacker";
+      });
+    } catch (e) {
+      status = "organization";
+    }
+
+    if (status == "organizatoin") {
+      Timer(const Duration(milliseconds: 2500), () {
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
               builder: (context) => firebaseAuth.currentUser != null
-                  ? HackerProfile(name: "Armaan")
-                  : LoginScreen()));
-    });
+                  ? OrganizationManagement()
+                  : LoginScreen()),
+        );
+      });
+    } else {
+      Timer(const Duration(milliseconds: 2500), () {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => firebaseAuth.currentUser != null
+                    ? const HackerProfile(name: "Armaan")
+                    : LoginScreen()));
+      });
+    }
   }
 
   @override
@@ -48,7 +79,7 @@ class _LandingPageState extends State<LandingPage> {
     }
 
     return Material(
-        color: Color(0xFF232946),
+        color: const Color(0xFF232946),
         textStyle: const TextStyle(
           color: Color(0xFFfffffe),
         ),

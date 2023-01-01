@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collabworks/screens/data.dart';
+import 'package:collabworks/screens/login_screen.dart';
 import 'package:collabworks/ui/find_teammates_screen.dart';
 import 'package:collabworks/ui/hackathons.dart';
 import 'package:collabworks/ui/hacker_hackathons.dart';
@@ -69,8 +71,10 @@ class _DefaultDrawerState extends State<DefaultDrawer> {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => Hackathons()));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => Hackathons(
+                        hackathonDataStream: getHackathons("MLH"),
+                      )));
             },
           ),
           const Divider(
@@ -105,6 +109,127 @@ class _DefaultDrawerState extends State<DefaultDrawer> {
             onTap: () {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => InvitationScreen()));
+            },
+          ),
+          const Divider(
+            height: 5,
+            thickness: 1,
+          ),
+          ListTile(
+            tileColor: const Color(0xFF121629),
+            title: Text(
+              'Log Out',
+              style: GoogleFonts.roboto(
+                color: const Color(0xFFb8c1ec),
+              ),
+            ),
+            onTap: () async {
+              await firebaseAuth.signOut();
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => LoginScreen()));
+            },
+          ),
+          const Divider(
+            height: 5,
+            thickness: 1,
+          ),
+          ListTile(
+            tileColor: const Color(0xFF121629),
+            title: Text(
+              'Profile',
+              style: GoogleFonts.roboto(
+                color: const Color(0xFFb8c1ec),
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => HackerProfileScreen()));
+            },
+          ),
+          const Divider(
+            height: 5,
+            thickness: 1,
+          ),
+          ListTile(
+            tileColor: const Color(0xFF121629),
+            title: Text(
+              'Settings',
+              style: GoogleFonts.roboto(
+                color: const Color(0xFFb8c1ec),
+              ),
+            ),
+            onTap: () {},
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class OrganizationDrawer extends StatefulWidget {
+  const OrganizationDrawer({super.key});
+
+  @override
+  State<OrganizationDrawer> createState() => _OrganizationDrawerState();
+}
+
+class _OrganizationDrawerState extends State<OrganizationDrawer> {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      backgroundColor: const Color(0xFF232946),
+      // Add a ListView to the drawer. This ensures the user can scroll
+      // through the options in the drawer if there isn't enough vertical
+      // space to fit everything.
+      child: ListView(
+        // Important: Remove any padding from the ListView.
+
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: const BoxDecoration(
+              color: Color(0xFF232946),
+              image:
+                  DecorationImage(image: AssetImage('assets/images/logo.png')),
+            ),
+            child: Container(
+              alignment: Alignment.bottomLeft,
+              child: const Text("",
+                  style: TextStyle(
+                    color: Colors.white,
+                  )),
+            ),
+          ),
+          ListTile(
+            tileColor: const Color(0xFF121629),
+            title: Text(
+              'Home',
+              style: GoogleFonts.roboto(
+                color: const Color(0xFFb8c1ec),
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => HackerProfile(name: 'Armaan')));
+            },
+          ),
+          const Divider(
+            height: 5,
+            thickness: 1,
+          ),
+          ListTile(
+            tileColor: const Color(0xFF121629),
+            title: Text(
+              'Hackathons',
+              style: GoogleFonts.roboto(
+                color: const Color(0xFFb8c1ec),
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => Hackathons(
+                        hackathonDataStream: getHackathons("MLH"),
+                      )));
             },
           ),
           const Divider(

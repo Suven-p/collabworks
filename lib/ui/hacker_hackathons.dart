@@ -1,35 +1,22 @@
 import 'package:collabworks/screens/hackathon_information.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-class HackathonData {
-  final String name;
-  final String description;
-  final String image;
-  final String members;
-  final String projects;
-
-  const HackathonData(
-      {required this.name,
-      required this.description,
-      required this.image,
-      required this.members,
-      required this.projects});
-}
+import 'package:collabworks/screens/data.dart';
 
 class HackerHackathons extends StatelessWidget {
   const HackerHackathons({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    const List<HackathonData> hackathons = [
-      HackathonData(
-          name: "Design-a-thon",
-          description: "Show your creativity!",
-          image: "assets/images/thon.png",
-          members: "5",
-          projects: "1"),
+    List<HackathonData> hackathons = [
+      designathon(),
     ];
+    String truncateWithEllipsis(int cutoff, String myString) {
+      return (myString.length <= cutoff)
+          ? myString
+          : '${myString.substring(0, cutoff)}...';
+    }
+
     return Container(
         color: Color(0xFF232946),
         alignment: Alignment.topLeft,
@@ -78,7 +65,9 @@ class HackerHackathons extends StatelessWidget {
                                           style: TextStyle(
                                             color: Color(0xFFb8c1ec),
                                           )),
-                                      Text(hackathon.description,
+                                      Text(
+                                          truncateWithEllipsis(
+                                              20, hackathon.description),
                                           style: TextStyle(
                                             color: Color(0xFFb8c1ec),
                                           )),
@@ -92,7 +81,13 @@ class HackerHackathons extends StatelessWidget {
                                             Navigator.of(context).push(
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        HackathonInformation())),
+                                                        HackathonInformation(
+                                                          viewPoint: 'hacker',
+                                                          hackathonDataStream:
+                                                              getHackathonData(
+                                                                  hackathon
+                                                                      .name),
+                                                        ))),
                                           },
                                       child: Text(
                                         'Check Details',

@@ -10,35 +10,33 @@ class FindTeammatesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF232946),
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, kToolbarHeight),
         child: DefaultAppBar(),
       ),
       drawer: DefaultDrawer(),
+      backgroundColor: const Color(0xFF232946),
       body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              Center(
-                child: Text(
-                  'Work with a great hacker just like you!',
-                  style: GoogleFonts.poppins(
-                    color: Color(0xFFfffffe),
-                    fontSize: 26,
-                  ),
-                  textAlign: TextAlign.center,
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 20,
+            ),
+            Center(
+              child: Text(
+                'Work with a great hacker just like you!',
+                style: GoogleFonts.poppins(
+                  color: const Color(0xFFfffffe),
+                  fontSize: 26,
                 ),
+                textAlign: TextAlign.center,
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              HackerWidget(),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const HackerWidget(),
+          ],
         ),
       ),
     );

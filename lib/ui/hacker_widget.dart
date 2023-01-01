@@ -22,7 +22,7 @@ class HackerWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8),
               child: CircleAvatar(
-                backgroundImage: AssetImage('assets/images/mlh.png'),
+                backgroundImage: AssetImage('assets/images/ron.png'),
                 radius: 30,
               ),
             ),
