@@ -1,3 +1,4 @@
+import 'package:collabworks/screens/messages_screen.dart';
 import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
 import 'package:collabworks/screens/mainScaffold.dart';
@@ -99,9 +100,18 @@ class TeamManagement extends StatelessWidget {
                                         color: Colors.white,
                                       ),
                                     ),
-                                    const Icon(
-                                      Icons.message,
-                                      color: Color.fromARGB(255, 18, 184, 245),
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).pushReplacement(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyMessagingScreen()));
+                                      },
+                                      child: const Icon(
+                                        Icons.message,
+                                        color:
+                                            Color.fromARGB(255, 18, 184, 245),
+                                      ),
                                     )
                                   ]),
                             ))

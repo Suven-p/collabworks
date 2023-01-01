@@ -14,6 +14,8 @@ var firebaseAuth = FirebaseAuth.instance;
 
 File? image;
 bool hasTeam = false;
+bool joinedHackathon = false;
+bool submittedProject = false;
 
 void showSnackBar(BuildContext context, String msg) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));

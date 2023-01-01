@@ -2,6 +2,7 @@ import 'package:collabworks/screens/mainScaffold.dart';
 import 'package:collabworks/ui/hacker_profile.dart';
 import 'package:collabworks/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SubmitProjectScreen extends StatefulWidget {
@@ -84,13 +85,13 @@ class _SubmitProjectScreenState extends State<SubmitProjectScreen> {
                 ),
                 TextFormField(
                   decoration: InputDecoration(
-                    labelText: 'Description',
+                    labelText: 'Team name',
                     filled: true,
                     fillColor: Color(0xFFb8c1ec),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Please enter a description';
+                      return 'Please enter a team name';
                     }
                     return null;
                   },
@@ -107,7 +108,7 @@ class _SubmitProjectScreenState extends State<SubmitProjectScreen> {
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Please enter a team name';
+                      return 'Please enter a description';
                     }
                     return null;
                   },
@@ -129,6 +130,8 @@ class _SubmitProjectScreenState extends State<SubmitProjectScreen> {
                         'teamName': _teamName,
                       });
                       showSnackBar(context, 'Submitted Project!');
+                      Fluttertoast.showToast(msg: 'Submitted Project!');
+                      submittedProject = true;
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => HackerProfile(name: 'Armaan')));
                     }

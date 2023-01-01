@@ -207,9 +207,10 @@ class _TeamMemberFormFieldState extends State<TeamMemberFormField> {
           ElevatedButton(
               onPressed: () {
                 hasTeam = true;
+                joinedHackathon = true;
                 setState(() {});
-                // Navigator.of(context).push(MaterialPageRoute(
-                //     builder: (context) => HackerProfile(name: 'Armaan')));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => HackerProfile(name: 'Armaan')));
               },
               child: Text("Submit"))
         ],

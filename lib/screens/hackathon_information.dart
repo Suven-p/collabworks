@@ -1,3 +1,6 @@
+import 'package:collabworks/screens/project_submission_screen.dart';
+import 'package:collabworks/screens/teamCreation.dart';
+import 'package:collabworks/utils/utils.dart';
 import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
 import 'package:collabworks/screens/mainScaffold.dart';
@@ -141,10 +144,32 @@ class HackathonInformation extends StatelessWidget {
                       ),
                       const SizedBox(height: 30),
                       (viewPoint == 'hacker')
-                          ? ElevatedButton(
-                              onPressed: () {},
-                              child: const Text('Join Hackathon'))
-                          : TeamsTable(hackathonData.teams),
+                          ? joinedHackathon == false
+                              ? ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                TeamCreationScreen()));
+                                  },
+                                  child: const Text('Join Hackathon'))
+                              : TeamsTable(hackathonData.teams)
+                          : submittedProject == false
+                              ? ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                SubmitProjectScreen()));
+                                  },
+                                  child: const Text('Submit Project'),
+                                )
+                              : ElevatedButton(
+                                  onPressed: () {
+                                    showSnackBar(context, 'You have submitted');
+                                  },
+                                  child: const Text('Submitted'),
+                                ),
                     ],
                   ),
                 );
