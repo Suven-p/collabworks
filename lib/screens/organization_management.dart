@@ -127,7 +127,7 @@ class _OrganizationManagementState extends State<OrganizationManagement> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return MainScaffold(
-      drawer: const DefaultDrawer(),
+      drawer: const OrganizationDrawer(),
       appBar: DefaultAppBar(),
       child: Theme(
         data: Theme.of(context).copyWith(

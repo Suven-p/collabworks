@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:collabworks/screens/login_screen.dart';
+import 'package:collabworks/screens/organization_management.dart';
 import 'package:collabworks/screens/signup_screen.dart';
 import 'package:collabworks/ui/hacker_profile.dart';
 import 'package:collabworks/utils/utils.dart';
@@ -18,14 +19,45 @@ class _LandingPageState extends State<LandingPage> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(milliseconds: 2500), () {
-      Navigator.pushReplacement(
+
+    getData();
+  }
+
+  void getData() {
+    String status = "";
+
+    try {
+      var data = firestore
+          .collection('hackers')
+          .doc(firebaseAuth.currentUser?.uid ?? '')
+          .get()
+          .then((value) {
+        status = "hacker";
+      });
+    } catch (e) {
+      status = "organization";
+    }
+
+    if (status == "organizatoin") {
+      Timer(const Duration(milliseconds: 2500), () {
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
               builder: (context) => firebaseAuth.currentUser != null
-                  ? const HackerProfile(name: "Armaan")
-                  : LoginScreen()));
-    });
+                  ? OrganizationManagement()
+                  : LoginScreen()),
+        );
+      });
+    } else {
+      Timer(const Duration(milliseconds: 2500), () {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => firebaseAuth.currentUser != null
+                    ? const HackerProfile(name: "Armaan")
+                    : LoginScreen()));
+      });
+    }
   }
 
   @override
@@ -51,63 +83,39 @@ class _LandingPageState extends State<LandingPage> {
         textStyle: const TextStyle(
           color: Color(0xFFfffffe),
         ),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                  padding: const EdgeInsets.only(left: 30, top: 60),
-                  child: Text("Welcome to\nCollabWorks",
-                      style: GoogleFonts.poppins(
-                        fontSize: 38,
-                        fontWeight: FontWeight.bold,
-                        // color: Color.fromARGB(255, 244, 105, 94),
-                      ))),
-              Container(
-                width: size.width,
-                height: size.height * 0.34,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+                padding: const EdgeInsets.only(
+                  left: 30,
+                  top: 0,
+                  bottom: 0,
                 ),
-                child: const Image(
-                  image: AssetImage('assets/images/logo.png'),
+                child: Text("Welcome to\nCollabWorks",
+                    style: GoogleFonts.poppins(
+                      fontSize: 38,
+                      fontWeight: FontWeight.bold,
+                      // color: Color.fromARGB(255, 244, 105, 94),
+                    ))),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: size.width,
+                  height: size.height * 0.34,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Image(
+                    image: AssetImage('assets/images/logo.png'),
+                  ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  TextButton(
-                    onPressed: signUp,
-                    style: TextButton.styleFrom(
-                      foregroundColor: const Color.fromARGB(255, 244, 105, 94),
-                    ),
-                    child: Text(
-                      "Sign Up",
-                      style: GoogleFonts.roboto(
-                        color: const Color(0xFFb8c1ec),
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: signIn,
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                    ),
-                    child: Text(
-                      "Sign In",
-                      style: GoogleFonts.roboto(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
+              ],
+            ),
+          ],
         ));
   }
 }

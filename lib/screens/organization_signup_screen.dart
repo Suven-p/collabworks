@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:collabworks/controllers/auth_controller.dart';
 import 'package:collabworks/models/organization_model.dart';
 import 'package:collabworks/screens/login_screen.dart';
+import 'package:collabworks/screens/organization_management.dart';
 import 'package:collabworks/screens/organization_signup_screen.dart';
 import 'package:collabworks/screens/organizaton_login_screen.dart';
 import 'package:collabworks/utils/utils.dart';
@@ -44,6 +45,8 @@ class _OrganizationSignUpScreenState extends State<OrganizationSignUpScreen> {
         email: _emailController.text,
         password: _passwordController.text);
     AuthController().registerOrganization(model, context);
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => OrganizationManagement()));
   }
 
   void pickImage(BuildContext context) async {

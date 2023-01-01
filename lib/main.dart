@@ -1,7 +1,5 @@
 import 'package:collabworks/screens/hackathon_information.dart';
-import 'package:collabworks/screens/teamCreation.dart';
-import 'package:collabworks/screens/team_management.dart';
-import 'package:collabworks/ui/hacker_teams.dart';
+import 'package:collabworks/screens/landing_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'screens/data.dart';
@@ -21,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: TeamCreationScreen(),
+      home: LandingPage(),
     );
   }
 }

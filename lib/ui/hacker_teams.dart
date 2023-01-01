@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collabworks/screens/team_management.dart';
 import 'package:collabworks/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -46,57 +47,63 @@ class _HackerTeamsShortState extends State<HackerTeamsShort> {
           projects: "1"),
     ];
 
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Row(
-        children: [
-          Text("Teams",
-              style: GoogleFonts.poppins(
-                fontSize: 20,
-                color: Color(0xFFfffffe),
-              )),
-          const Spacer(),
-          TextButton(
-              onPressed: () {},
-              child: const Text("See all",
-                  style: const TextStyle(color: Colors.blue)))
-        ],
-      ),
-      Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(3),
-          height: 148,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(10),
-            color: Color.fromARGB(0, 158, 173, 249),
-          ),
-          child: ListView.builder(
-            itemCount: 1,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return Container(
-                padding: const EdgeInsets.all(3),
-                height: 130,
-                child: SingleChildScrollView(
-                  child: Column(children: [
-                    CircleAvatar(
-                      radius: 58,
-                      backgroundImage: AssetImage(teams[index].image),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(1.0),
-                      child: Text(
-                        teams[index].name,
-                        style: TextStyle(
-                          color: Color(0xFFb8c1ec),
-                        ),
+    return InkWell(
+      onTap: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => TeamManagement()));
+      },
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(
+          children: [
+            Text("Teams",
+                style: GoogleFonts.poppins(
+                  fontSize: 20,
+                  color: Color(0xFFfffffe),
+                )),
+            const Spacer(),
+            TextButton(
+                onPressed: () {},
+                child: const Text("See all",
+                    style: const TextStyle(color: Colors.blue)))
+          ],
+        ),
+        Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.all(3),
+            height: 148,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey),
+              borderRadius: BorderRadius.circular(10),
+              color: Color.fromARGB(0, 158, 173, 249),
+            ),
+            child: ListView.builder(
+              itemCount: 1,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return Container(
+                  padding: const EdgeInsets.all(3),
+                  height: 130,
+                  child: SingleChildScrollView(
+                    child: Column(children: [
+                      CircleAvatar(
+                        radius: 58,
+                        backgroundImage: AssetImage(teams[index].image),
                       ),
-                    )
-                  ]),
-                ),
-              );
-            },
-          ))
-    ]);
+                      Padding(
+                        padding: const EdgeInsets.all(1.0),
+                        child: Text(
+                          teams[index].name,
+                          style: TextStyle(
+                            color: Color(0xFFb8c1ec),
+                          ),
+                        ),
+                      )
+                    ]),
+                  ),
+                );
+              },
+            ))
+      ]),
+    );
   }
 }

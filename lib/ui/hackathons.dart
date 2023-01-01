@@ -17,7 +17,7 @@ class Hackathons extends StatelessWidget {
         preferredSize: Size(double.infinity, kToolbarHeight),
         child: DefaultAppBar(),
       ),
-      drawer: DefaultDrawer(),
+      drawer: OrganizationDrawer(),
       body: Container(
           color: Color(0xFF232946),
           alignment: Alignment.topLeft,

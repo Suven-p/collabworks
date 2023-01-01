@@ -1,3 +1,4 @@
+import 'package:collabworks/screens/mainScaffold.dart';
 import 'package:collabworks/ui/hacker_profile.dart';
 import 'package:collabworks/ui/hacker_widget.dart';
 import 'package:flutter/material.dart';
@@ -9,147 +10,12 @@ class FindTeammatesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, kToolbarHeight),
+        child: DefaultAppBar(),
+      ),
+      drawer: DefaultDrawer(),
       backgroundColor: const Color(0xFF232946),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF232946),
-        title: const Text('CollabWorks'),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 18.0),
-            child: GestureDetector(
-                onTap: () {
-                  debugPrint("Avatar tapped");
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const FindTeammatesScreen()));
-                },
-                child: Container(
-                    padding: const EdgeInsets.all(5),
-                    child: const CircleAvatar(
-                      backgroundImage: NetworkImage(''),
-                    ))),
-          ),
-        ],
-      ),
-      drawer: Drawer(
-        backgroundColor: const Color(0xFF232946),
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: const BoxDecoration(
-                color: Color(0xFF232946),
-                image: DecorationImage(
-                    image: AssetImage('assets/images/logo.png')),
-              ),
-              child: Container(
-                alignment: Alignment.bottomLeft,
-                child: const Text("",
-                    style: TextStyle(
-                      color: Colors.white,
-                    )),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const HackerProfile(name: 'Armaan')));
-              },
-              child: ListTile(
-                tileColor: const Color(0xFF121629),
-                title: Text(
-                  'Home',
-                  style: GoogleFonts.roboto(
-                    color: const Color(0xFFb8c1ec),
-                  ),
-                ),
-                onTap: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) =>
-                          const HackerProfile(name: 'Armaan')));
-                },
-              ),
-            ),
-            const Divider(
-              height: 5,
-              thickness: 1,
-            ),
-            ListTile(
-              tileColor: const Color(0xFF121629),
-              title: Text(
-                'Hackathons',
-                style: GoogleFonts.roboto(
-                  color: const Color(0xFFb8c1ec),
-                ),
-              ),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              thickness: 1,
-            ),
-            ListTile(
-              tileColor: const Color(0xFF121629),
-              title: Text(
-                'Find Team mates',
-                style: GoogleFonts.roboto(
-                  color: const Color(0xFFb8c1ec),
-                ),
-              ),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              thickness: 1,
-            ),
-            ListTile(
-              tileColor: const Color(0xFF121629),
-              title: Text(
-                'Invitations',
-                style: GoogleFonts.roboto(
-                  color: const Color(0xFFb8c1ec),
-                ),
-              ),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              thickness: 1,
-            ),
-            ListTile(
-              tileColor: const Color(0xFF121629),
-              title: Text(
-                'Profile',
-                style: GoogleFonts.roboto(
-                  color: const Color(0xFFb8c1ec),
-                ),
-              ),
-              onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const FindTeammatesScreen()));
-              },
-            ),
-            const Divider(
-              height: 5,
-              thickness: 1,
-            ),
-            ListTile(
-              tileColor: const Color(0xFF121629),
-              title: Text(
-                'Settings',
-                style: GoogleFonts.roboto(
-                  color: const Color(0xFFb8c1ec),
-                ),
-              ),
-              onTap: () {},
-            ),
-          ],
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -201,6 +201,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       TextField(
                         controller: _passwordController,
+                        obscureText: true,
                         decoration: const InputDecoration(
                           filled: true,
                           fillColor: Color(0xFFb8c1ec),
@@ -214,6 +215,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       TextField(
                         controller: _confirmPasswordController,
+                        obscureText: true,
                         decoration: const InputDecoration(
                           filled: true,
                           fillColor: Color(0xFFb8c1ec),

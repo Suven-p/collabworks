@@ -17,12 +17,11 @@ class TeamData {
 class TeamManagement extends StatelessWidget {
   TeamManagement({Key? key}) : super(key: key);
   final TeamData teamData = TeamData(
-    name: "Team 1",
+    name: "MLH TEAM",
     description: "A ragtag bunch of so-called full-stack developers",
-    hackathon: "Support-a-thon",
-    members: ['Member 1', 'Member 2', 'Member 3'],
-    image:
-        'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    hackathon: "Design-a-thon",
+    members: ['ARMAAN', 'NEVUS', 'RON'],
+    image: 'assets/images/teamImg.png',
   );
 
   @override
@@ -40,7 +39,10 @@ class TeamManagement extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                SizedBox(height: 80, child: Image.network(teamData.image)),
+                SizedBox(
+                    height: 80,
+                    child:
+                        Image(image: AssetImage('assets/images/teamImg.png'))),
                 const SizedBox(height: 10),
                 Center(
                   child: Text(

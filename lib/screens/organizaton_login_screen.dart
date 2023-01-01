@@ -1,5 +1,6 @@
 import 'package:collabworks/controllers/auth_controller.dart';
 import 'package:collabworks/screens/login_screen.dart';
+import 'package:collabworks/screens/organization_management.dart';
 import 'package:collabworks/screens/organization_signup_screen.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
@@ -27,6 +28,8 @@ class _OrganizationLogInScreenState extends State<OrganizationLogInScreen> {
   void login(BuildContext context) {
     AuthController().loginOrganization(
         _passwordController.text, _emailController.text, context);
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => OrganizationManagement()));
   }
 
   @override

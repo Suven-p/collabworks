@@ -22,7 +22,7 @@ class HackerWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8),
               child: CircleAvatar(
-                backgroundImage: AssetImage('assets/images/mlh.png'),
+                backgroundImage: AssetImage('assets/images/ron.png'),
                 radius: 30,
               ),
             ),
@@ -38,7 +38,7 @@ class HackerWidget extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'ron330000@gmail.com',
+                  'ron33000@gmail.com',
                   style: GoogleFonts.lato(
                     fontSize: 14,
                     color: Color(0xFF121629),
