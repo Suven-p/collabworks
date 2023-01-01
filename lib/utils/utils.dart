@@ -13,6 +13,7 @@ var firebaseAuth = FirebaseAuth.instance;
 //utils
 
 File? image;
+bool hasTeam = false;
 
 void showSnackBar(BuildContext context, String msg) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));

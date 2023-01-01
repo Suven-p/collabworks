@@ -73,8 +73,6 @@ HackathonData designathon() {
     projects: "1",
     teams: [
       TeamData(name: 'MLH TEAM', members: ['ARMAAN', 'NEVUS']),
-      TeamData(name: 'ORCHID TEAM', members: ['POPSMOKE', 'SLASH']),
-      TeamData(name: 'WINNERS TEAM', members: ['Rohit', 'Leon']),
     ],
   );
 }
