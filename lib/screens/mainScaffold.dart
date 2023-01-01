@@ -1,15 +1,22 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collabworks/ui/find_teammates_screen.dart';
 import 'package:collabworks/ui/hackathons.dart';
 import 'package:collabworks/ui/hacker_hackathons.dart';
 import 'package:collabworks/ui/hacker_profile.dart';
 import 'package:collabworks/ui/hacker_profile_screen.dart';
 import 'package:collabworks/ui/invitation_screen.dart';
+import 'package:collabworks/utils/utils.dart';
 import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
 
-class DefaultDrawer extends StatelessWidget {
+class DefaultDrawer extends StatefulWidget {
   const DefaultDrawer({super.key});
 
+  @override
+  State<DefaultDrawer> createState() => _DefaultDrawerState();
+}
+
+class _DefaultDrawerState extends State<DefaultDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -137,7 +144,12 @@ class DefaultDrawer extends StatelessWidget {
   }
 }
 
-class DefaultAppBar extends StatelessWidget {
+class DefaultAppBar extends StatefulWidget {
+  @override
+  State<DefaultAppBar> createState() => _DefaultAppBarState();
+}
+
+class _DefaultAppBarState extends State<DefaultAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -147,7 +159,7 @@ class DefaultAppBar extends StatelessWidget {
   }
 }
 
-class MainScaffold extends StatelessWidget {
+class MainScaffold extends StatefulWidget {
   final Widget child;
   final Widget appBar;
   final Widget drawer;
@@ -159,6 +171,11 @@ class MainScaffold extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<MainScaffold> createState() => _MainScaffoldState();
+}
+
+class _MainScaffoldState extends State<MainScaffold> {
+  @override
   Widget build(BuildContext context) {
     return Material(
         color: const Color(0xFF232946),
@@ -166,14 +183,14 @@ class MainScaffold extends StatelessWidget {
           color: Color(0xFFfffffe),
         ),
         child: Scaffold(
-            drawer: drawer,
+            drawer: widget.drawer,
             appBar: PreferredSize(
               preferredSize: const Size(double.infinity, kToolbarHeight),
-              child: appBar,
+              child: widget.appBar,
             ),
             backgroundColor: const Color(0xFF232946),
             body: SingleChildScrollView(
-              child: child,
+              child: widget.child,
             )));
   }
 }

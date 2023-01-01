@@ -57,55 +57,33 @@ class _LandingPageState extends State<LandingPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-                padding: const EdgeInsets.only(left: 30, top: 60),
+                padding: const EdgeInsets.only(
+                  left: 30,
+                  top: 0,
+                  bottom: 0,
+                ),
                 child: Text("Welcome to\nCollabWorks",
                     style: GoogleFonts.poppins(
                       fontSize: 38,
                       fontWeight: FontWeight.bold,
                       // color: Color.fromARGB(255, 244, 105, 94),
                     ))),
-            Container(
-              width: size.width,
-              height: size.height * 0.34,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Image(
-                image: AssetImage('assets/images/logo.png'),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextButton(
-                  onPressed: signUp,
-                  style: TextButton.styleFrom(
-                    foregroundColor: const Color.fromARGB(255, 244, 105, 94),
+                Container(
+                  width: size.width,
+                  height: size.height * 0.34,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Text(
-                    "Sign Up",
-                    style: GoogleFonts.roboto(
-                      color: Color(0xFFb8c1ec),
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: signIn,
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                  ),
-                  child: Text(
-                    "Sign In",
-                    style: GoogleFonts.roboto(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
+                  child: Image(
+                    image: AssetImage('assets/images/logo.png'),
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ));
   }

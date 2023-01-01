@@ -28,8 +28,8 @@ class HackathonInformation extends StatelessWidget {
   HackathonInformation({Key? key}) : super(key: key);
   final HackathonData hackathonData = HackathonData(
     name: "Design-a-thon",
-    startDate: "Dec 16, 2022",
-    endDate: "Dec 18, 2022",
+    startDate: "Dec 23, 2022",
+    endDate: "Dec 25, 2022",
     description:
         "Let's bridge the gap for those with a variety of abilities and learn the best practices of creating accessible tech in all of our projects #a11y. We will be running a fun, activity-filled, open-themed digital hackathon. Feel free to hack on whatever you'd like or make it on-theme for the fun of it. These events are open to all skill levels, from beginners to the most veteran developers. While we'd love to have you build something on the theme, our themes are only here for inspiration. Please build whatever you'd like and focus on having fun!",
     teams: [

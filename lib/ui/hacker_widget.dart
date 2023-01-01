@@ -38,7 +38,7 @@ class HackerWidget extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'ron330000@gmail.com',
+                  'ron33000@gmail.com',
                   style: GoogleFonts.lato(
                     fontSize: 14,
                     color: Color(0xFF121629),
