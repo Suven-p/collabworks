@@ -1,3 +1,5 @@
+import 'package:collabworks/screens/mainScaffold.dart';
+import 'package:collabworks/ui/message_widget.dart';
 import 'package:collabworks/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -32,62 +34,55 @@ class _MyMessagingScreenState extends State<MyMessagingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Messaging'),
+      drawer: DefaultDrawer(),
+      backgroundColor: Color(0xFF232946),
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, kToolbarHeight),
+        child: DefaultAppBar(),
       ),
-      body: Container(
-        alignment: Alignment.topLeft,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Expanded(
-              child: StreamBuilder(
-                stream: _firestore
-                    .collection('teams')
-                    .doc('MLH TEAM')
-                    .collection('messages')
-                    .snapshots(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-
-                  final messages = snapshot.data!.docs.reversed;
-                  List<Widget> messageWidgets = [];
-                  for (var message in messages) {
-                    final messageText = message['text'];
-                    final messageSender = message['sender'];
-
-                    final messageWidget = Container(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        '$messageText from $messageSender',
-                      ),
-                    );
-
-                    messageWidgets.add(messageWidget);
-                  }
-                  return Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.black,
-                      ),
-                    ),
-                    alignment: Alignment.center,
-                    child: ListView(
-                      reverse: true,
-                      children: messageWidgets,
-                    ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            child: StreamBuilder(
+              stream: _firestore
+                  .collection('teams')
+                  .doc('MLH TEAM')
+                  .collection('messages')
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: CircularProgressIndicator(),
                   );
-                },
-              ),
+                }
+
+                final messages = snapshot.data!.docs.reversed;
+                List<Widget> messageWidgets = [];
+                for (var message in messages) {
+                  final messageText = message['text'];
+                  final messageSender = message['sender'];
+
+                  final messageWidget = MessageWidget(
+                    message: messageText,
+                    sender: 'Armaan',
+                  );
+
+                  messageWidgets.add(messageWidget);
+                }
+                return ListView(
+                  reverse: true,
+                  children: messageWidgets,
+                );
+              },
             ),
-            Container(
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Color(0xFFb8c1ec),
                 border: Border(
                   top: BorderSide(
                     color: Colors.grey,
@@ -101,6 +96,9 @@ class _MyMessagingScreenState extends State<MyMessagingScreen> {
                   children: <Widget>[
                     Expanded(
                       child: TextField(
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                         controller: _textController,
                         decoration: InputDecoration(
                           hintText: 'Enter your message...',
@@ -131,8 +129,8 @@ class _MyMessagingScreenState extends State<MyMessagingScreen> {
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
