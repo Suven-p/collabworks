@@ -190,12 +190,16 @@ Widget TeamsTable(List<TeamData> teams) {
             DataColumn(label: Text("S.N.")),
             DataColumn(label: Text("Team Name")),
             DataColumn(label: Text("Members")),
+            DataColumn(label: Text("Submitted"))
           ],
           rows: teams.map((team) {
             return DataRow(cells: [
               DataCell(Text((teams.indexOf(team) + 1).toString())),
               DataCell(Text(team.name)),
               DataCell(Text(team.members.join("\n"))),
+              team.name == teams[0].name
+                  ? DataCell(Icon(Icons.check, color: Colors.green))
+                  : DataCell(Icon(Icons.close, color: Colors.red)),
             ]);
           }).toList(),
         );
