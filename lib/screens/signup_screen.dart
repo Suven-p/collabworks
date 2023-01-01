@@ -90,203 +90,205 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(18.0),
-                child: Column(
-                  // ignore: prefer_const_literals_to_create_immutables
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'We enjoy new hackers coming!',
-                      style: GoogleFonts.roboto(
-                        fontSize: 21,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xFFfffffe),
+                child: SingleChildScrollView(
+                  child: Column(
+                    // ignore: prefer_const_literals_to_create_immutables
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'We enjoy new hackers coming!',
+                        style: GoogleFonts.roboto(
+                          fontSize: 21,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xFFfffffe),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      'Be a part of the community...',
-                      style: GoogleFonts.roboto(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w300,
-                        color: const Color(0xFFfffffe),
+                      const SizedBox(height: 10),
+                      Text(
+                        'Be a part of the community...',
+                        style: GoogleFonts.roboto(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w300,
+                          color: const Color(0xFFfffffe),
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Stack(
-                      children: [
-                        image == null
-                            ? const CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                    'https://previews.123rf.com/images/kritchanut/kritchanut1406/kritchanut140600093/29213195-male-silhouette-avatar-profile-picture.jpg'),
-                                radius: 40,
-                              )
-                            : CircleAvatar(
-                                backgroundImage: FileImage(image!),
-                                radius: 40,
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Stack(
+                        children: [
+                          image == null
+                              ? const CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      'https://previews.123rf.com/images/kritchanut/kritchanut1406/kritchanut140600093/29213195-male-silhouette-avatar-profile-picture.jpg'),
+                                  radius: 40,
+                                )
+                              : CircleAvatar(
+                                  backgroundImage: FileImage(image!),
+                                  radius: 40,
+                                ),
+                          Positioned(
+                            right: -10,
+                            top: 40,
+                            child: IconButton(
+                              onPressed: () {
+                                pickImage(context);
+                                setState(() {});
+                              },
+                              icon: const Icon(
+                                Icons.add,
+                                size: 30,
+                                color: Colors.green,
                               ),
-                        Positioned(
-                          right: -10,
-                          top: 40,
-                          child: IconButton(
-                            onPressed: () {
-                              pickImage(context);
-                              setState(() {});
-                            },
-                            icon: const Icon(
-                              Icons.add,
-                              size: 30,
-                              color: Colors.green,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      TextField(
+                        controller: _nameController,
+                        decoration: const InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xFFb8c1ec),
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(CupertinoIcons.profile_circled),
+                          hintText: " Username",
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextField(
+                        controller: _ageController,
+                        decoration: const InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xFFb8c1ec),
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(CupertinoIcons.number),
+                          hintText: " Age",
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextField(
+                        controller: _phoneNumberController,
+                        decoration: const InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xFFb8c1ec),
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(CupertinoIcons.phone),
+                          hintText: " Phone Number",
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextField(
+                        controller: _emailController,
+                        decoration: const InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xFFb8c1ec),
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(CupertinoIcons.mail),
+                          hintText: " E-Mail",
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextField(
+                        controller: _passwordController,
+                        decoration: const InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xFFb8c1ec),
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(CupertinoIcons.padlock),
+                          hintText: " Password",
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextField(
+                        controller: _confirmPasswordController,
+                        decoration: const InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xFFb8c1ec),
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(CupertinoIcons.padlock),
+                          hintText: " Confirm password",
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Container(
+                          alignment: Alignment.centerRight,
+                          child: InkWell(
+                            onTap: () => Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => LoginScreen())),
+                            child: Text(
+                              'Already have an account?',
+                              style: GoogleFonts.roboto(
+                                fontSize: 13,
+                                color: const Color(0xFFb8c1ec),
+                              ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    TextField(
-                      controller: _nameController,
-                      decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Color(0xFFb8c1ec),
-                        border: OutlineInputBorder(),
-                        prefixIcon: Icon(CupertinoIcons.profile_circled),
-                        hintText: " Username",
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextField(
-                      controller: _ageController,
-                      decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Color(0xFFb8c1ec),
-                        border: OutlineInputBorder(),
-                        prefixIcon: Icon(CupertinoIcons.number),
-                        hintText: " Age",
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Container(
+                          alignment: Alignment.centerLeft,
+                          child: InkWell(
+                            onTap: () => Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        OrganizationSignUpScreen())),
+                            child: Text(
+                              'An Organization?',
+                              style: GoogleFonts.roboto(
+                                fontSize: 13,
+                                color: const Color(0xFFb8c1ec),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextField(
-                      controller: _phoneNumberController,
-                      decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Color(0xFFb8c1ec),
-                        border: OutlineInputBorder(),
-                        prefixIcon: Icon(CupertinoIcons.phone),
-                        hintText: " Phone Number",
+                      const SizedBox(
+                        height: 10,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextField(
-                      controller: _emailController,
-                      decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Color(0xFFb8c1ec),
-                        border: OutlineInputBorder(),
-                        prefixIcon: Icon(CupertinoIcons.mail),
-                        hintText: " E-Mail",
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextField(
-                      controller: _passwordController,
-                      decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Color(0xFFb8c1ec),
-                        border: OutlineInputBorder(),
-                        prefixIcon: Icon(CupertinoIcons.padlock),
-                        hintText: " Password",
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextField(
-                      controller: _confirmPasswordController,
-                      decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Color(0xFFb8c1ec),
-                        border: OutlineInputBorder(),
-                        prefixIcon: Icon(CupertinoIcons.padlock),
-                        hintText: " Confirm password",
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Container(
-                        alignment: Alignment.centerRight,
-                        child: InkWell(
-                          onTap: () => Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => LoginScreen())),
+                      InkWell(
+                        onTap: () {
+                          signUp(context);
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          height: size.height * 0.056,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFeebbc3),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                           child: Text(
-                            'Already have an account?',
-                            style: GoogleFonts.roboto(
-                              fontSize: 13,
-                              color: const Color(0xFFb8c1ec),
+                            'Sign Up!',
+                            style: GoogleFonts.lato(
+                              color: const Color(0xFF232946),
+                              fontSize: 16,
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Container(
-                        alignment: Alignment.centerLeft,
-                        child: InkWell(
-                          onTap: () => Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      OrganizationSignUpScreen())),
-                          child: Text(
-                            'An Organization?',
-                            style: GoogleFonts.roboto(
-                              fontSize: 13,
-                              color: const Color(0xFFb8c1ec),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        signUp(context);
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.symmetric(horizontal: 10),
-                        height: size.height * 0.056,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFeebbc3),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Text(
-                          'Sign Up!',
-                          style: GoogleFonts.lato(
-                            color: const Color(0xFF232946),
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
